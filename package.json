@@ -1,0 +1,21 @@
+{
+  "name": "project_2-group-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "javascript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElhamFabe/Project_2-Group-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElhamFabe/Project_2-Group-1/issues"
+  },
+  "homepage": "https://github.com/ElhamFabe/Project_2-Group-1#readme",
+  "keywords": []
+}
