@@ -1,0 +1,71 @@
+MVC paradigm folder structure:  
+```
+├── config
+│   ├── middleware
+│   │   └── isAuthenticated.js
+|   ├── connection.js
+│   └── passport.js
+│ 
+├── controllers
+│   └── burgers_controller.js
+│
+├── routes
+│   ├── api-routes.js
+│   └── html-routes.js
+│
+├── models
+│   └── index.js
+│   └── user.js
+├── node_modules
+│ 
+├── package.json
+├── .gitignore
+├── .eslintignore
+├── .eslintignore.json
+├── .travis.yml
+|
+├── public
+│   └── assets
+|   |   └──checkList.txt
+│   ├── js
+|   |   └── login.js
+│   |   └── members.js
+|   |   └── signup.js
+│   ├── css
+│   |    └── style.css
+│   └── img
+│   |  └── applicationimg.png
+|   |── login.html
+|   └── members.html   
+│   └── signup.html
+|
+|
+├── server.js
+│
+└── views ? (if adding handl)
+    ├── index.handlebars
+    └── layouts
+        └── main.handlebars
+```
+
+Coding Requirments:
+
+Retrieve Api Keys:
+    #1 -
+    #2 -
+    #3 (oiptional)-
+
+Node and Express web server
+
+MYSQL database w/ Suquelize ORM
+
+Routes :
+-    api-routes
+-    html-routes
+**MUST have GET and POST routes for Retrieving and adding new data.
+
+Deploy to Heroku (w/data)
+-
+
+
+
