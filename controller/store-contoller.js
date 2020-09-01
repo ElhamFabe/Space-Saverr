@@ -1,12 +1,37 @@
+<<<<<<< HEAD
+var express = require('express');
+var router = express.Router();
+var path = require('path');
+=======
 var express = require("express");
 var router = express.Router();
 var path = require("path");
 var db = require("../models");
+>>>>>>> d81294bc72a314dbea062087f0a13076ddcf7648
 
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // User will land at amazon.html when query returns 'if user wants to see only amazon deals.'
 router.get("/amazon", isAuthenticated, (req, res) => {
+<<<<<<< HEAD
+    res.sendFile(path.join(__dirname, "../views/stores/amazon.html"));
+});
+
+// User will land at ebay.html when query returns 'if user wants to see only ebay deals.' 
+router.get("/ebay", isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "../views/stores/ebay.html"));
+});
+
+// User will land at walmart.html when query returns 'if user wants to see only walmart deals.' 
+router.get("/walmart", isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "../views/stores/walmart.html"));
+})
+
+// User will land at spacesaver.html after login has been successful.
+router.get("/members", isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "../views/stores/spacesaver.html"))
+})
+=======
   res.sendFile(path.join(__dirname, "../views/stores/amazon.html"));
 });
 
@@ -120,3 +145,4 @@ router.delete("/api/members/:id", (req, res) => {
     }
   });
 });
+>>>>>>> d81294bc72a314dbea062087f0a13076ddcf7648

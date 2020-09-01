@@ -1,10 +1,6 @@
 testAPI
 node_modules
 .env
-ds_store
-/models/index.js
-/config/config.json
-/config/config.js
 
 # Logs
 logs
