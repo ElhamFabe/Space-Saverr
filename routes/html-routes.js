@@ -27,3 +27,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 };
+
+// router.get("/members", isAuthenticated, (req, res) => {
+//   res.sendFile(path.join(__dirname, "../views/stores/spacesaver.html"))
+// })
