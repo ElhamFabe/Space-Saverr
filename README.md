@@ -1,9 +1,7 @@
 
 # Project_2-Group-1
 
+* Contributors:
 
- ### Contributors:
-  Elham T.Hussain, Maurya Patel, Carlo-Defilippis & Ivan Zapata-Rivera
-=======
-# Project_2-Group-1.
+* Elham T.Hussain, Maurya Patel, Carlo Defilippis & Ivan Zapata-Rivera
 
