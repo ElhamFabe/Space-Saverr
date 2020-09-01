@@ -19,19 +19,16 @@ passport.use(
       }).then(dbUser => {
         // If there's no user with the given email
         if (!dbUser) {
-          console.log('this is the if !dbUser');
           return done(null, false, {
             message: "Incorrect email."
           });
         }
         // If there is a user with the given email, but the password the user gives us is incorrect
         else if (!dbUser.validPassword(password)) {
-          console.log('this is the else if !dbUser.validpassword');
           return done(null, false, {
             message: "Incorrect password."
           });
         }
-        console.log('this return done');
         // If none of the above, return the user
         return done(null, dbUser);
       });
