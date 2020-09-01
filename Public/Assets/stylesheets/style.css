@@ -12,7 +12,7 @@ header{
   height: 100vh;
   position: relative;
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
@@ -34,26 +34,75 @@ a{
 .fa-times {
   font-size: 3.5rem;
 }
-.fa-times{
-display: relative;
-display: flex;
-justify-content: space-between;
-align-items: center;
-border-bottom: 1px solid rgb(0,0,0, .075);
-z-index: 1000;
+.fa-times {
+  display: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.075);
+  z-index: 1000;
 }
-.logo{
-  width:5rem;
+.logo {
+  width: 5rem;
   box-sizing: content-box;
-  padding-left:3rem;
+  padding-left: 3rem;
 }
 .logo img {
   display: block;
   width: 100%;
 }
-
 nav ul {
   height: 8rem;
-  list-style-type: none;
-  display:
+  list-style: none;
+  display: flex;
+  font-size: 1.6rem;
+}
+
+nav ul li {
+  padding: 0 3rem;
+  line-height: 8rem;
+  transition: background-color .5s;
+}
+
+nav ul li:hover {
+  background-color: rgba (0,0,0,.075);
+}
+.nav-right ul li {
+border-right: 1px solid rgba(0,0,0,.075)  
+}
+.nav-right ul li:nth-child(1){
+  border-left: 1px solid rgb(0, 0, 0, 0.075)
+
+}
+.nav-right ul li:last-child{
+  border-right:none;
+
+}
+.nav-right i {
+  margin-right: 0;
+}
+.main {
+  position: absolute;
+  display: flex;
+  top: 0;
+  right:0;
+  left:0;
+  bottom:0;
+}
+.tone-1{
+  background-color: whitesmoke;
+  height: 100vh;
+  flex: 1;
+}
+.tone-2{
+  background-color: lightsteelblue;
+  height: 100vh;
+  flex: 1;
+}
+.tone-2 img{
+  width:100%;
+  position: absolute;
+  top: 50%;
+  left: -15rem;
+  transform: translateY(-50%);
 }

@@ -93,7 +93,7 @@ h1 {
   height: 1px;
   background: #000;
   position: absolute;
-  animation: fazer1 .2s linear infinite;
+  animation: fazer1 .3s linear infinite;
 }
 
 .body > span > span:nth-child(2) {
