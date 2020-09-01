@@ -30,12 +30,15 @@ $(document).ready(() => {
     })
       .then(() => {
         window.location.replace("/members");
+        console.log('this is the sign up user function');
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
+
   }
 
   function handleLoginErr(err) {
+    console.log('this is the error function');
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
