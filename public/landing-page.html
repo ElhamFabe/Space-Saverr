@@ -15,27 +15,8 @@
 </head>
 
 <body>
-  <!-- <header> -->
-  <!-- <div class="menu-toggle">
-        <i class="fas fa-bars"></i>
-      </div>
-      <div class="overlay"></div>
-      <nav>
-        <i class="fas fa-times"></i>
-        <div class="logo">
-          <img src="" alt="Space Saver"/>
-        </div>
-        <div class="nav-middle">
-          <ul>
-            <li>
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">Match & Save</a>
-            </li>
-            <li>
-              <a href="#">Account</a>
-            </li> -->
+
+
   <!-- Amazon button -->
   <!-- <li>
               <a href id="LoginWithAmazon">
@@ -102,7 +83,7 @@
       </nav> -->
   <!-- </header> -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Space Saver</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -128,13 +109,14 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+        </li> -->
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button>
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
+        <button type="submit" class="btn btn-outline-info btn-rounded waves-effect" id="spaceSearch">Search</button>
       </form>
     </div>
   </nav>
@@ -156,8 +138,8 @@
     </div>
     </div>
   </main>
-  <div class="loading">
-    <div class='body'>
+  <section class="loading">
+    <article class='body'>
       <span>
         <span></span>
         <span></span>
@@ -168,16 +150,142 @@
         <span></span>
         <div class='face'></div>
       </div>
-    </div>
-    <div class='longfazers'>
+    </article>
+    <article class='longfazers'>
       <span></span>
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </article>
     <h1>Fetching Deals</h1>
-  </div>
-<!-- cards for products -->
+  </section>
+  <!-- cards beginning -->
+  <!-- <div class="wrapper" id="spaceCards">
+    <h1 id='dealCards'>Space Saver Deals!</h1>
+    <div class="cols">
+      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
+            <div class="inner">
+              <p>amazon</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front">
+            <div class="inner">
+              <p>amazon</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/502/502/)">
+            <div class="inner">
+              <p>amazon</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
+            <div class="inner">
+              <p>amazon</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/504/504/">
+            <div class="inner">
+              <p>Ebay</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front">
+            <div class="inner">
+              <p>Ebay</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front">
+            <div class="inner">
+              <p>Ebay</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front">
+            <div class="inner">
+              <p>Ebay</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- cards end -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -187,7 +295,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
-    <script src="./js/javascript.js"></script>
+  <script src="./js/javascript.js"></script>
 </body>
 
 </html>
