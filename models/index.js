@@ -9,7 +9,7 @@ var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
 require("dotenv").config();
 
-// console.log(process.env.Space_saver);
+console.log(process.env);
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -17,7 +17,7 @@ if (config.use_env_variable) {
   var sequelize = new Sequelize(
     config.database,
     config.username,
-    process.env.Space_saver,
+    process.env.MYSQL_KEY,
     config
   );
 }
