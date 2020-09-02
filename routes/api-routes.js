@@ -16,12 +16,13 @@ module.exports = function(app) {
 
 
   // Ebay routes
-  app.post("/api/ebay", (req, res) => {
-      console.log("This is the request ",req);
-      console.log("This is the responce ",res);
-    
-    // Sending back a password, even a hashed password, isn't a good idea
-      });
+  app.get('/request/search', (req, res) => {
+    console.log(req.params);
+  });
+
+  app.post('/search/:id', function(req, res){
+    console.log(req.body);
+});
   // Ebay routes end
 
 

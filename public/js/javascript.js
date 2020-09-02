@@ -1,7 +1,12 @@
-$(document).ready(function () {
+// $(document).ready(function () {
 
-    $(".searchButton").on("click", function() {
-        var textBox = $(".searchBox").val();
-        console.log(textBox);
-    });
-});
+//     $(".searchButton").on("click", function() {
+//         var textBox = $(".searchBox").val();
+//         console.log(textBox);
+//     });
+
+
+
+
+
+// });
