@@ -68,16 +68,19 @@ let ebay = new Ebay({
 
     // search button listener
     var keySearch;
-
-$(".searchButton").on("click", function() {
-    var textBox = $(".searchBox").val()
-    keySearch = textBox;
-});
-
-    console.log(keySearch)
-    
     var sortBy = "PricePlusShippingLowest";
 
+$(".searchButton").on("click", function() {
+    var textBox = $(".searchBox").val();
+    keySearch = textBox;
+    searchEbayByKeyword(keySearch, sortBy);
+});
+
+    console.log(keySearch);
+    
+
+
+function searchEbayByKeyword(keySearch, sortBy) {
     ebay.FindItemsByKeywords({
         keywords: keySearch,
         sortOrder: sortBy, //https://developer.ebay.com/devzone/finding/callref/extra/fndcmpltditms.rqst.srtordr.html
@@ -88,4 +91,5 @@ $(".searchButton").on("click", function() {
     }, (error) => {
         console.log(error);
     });
+}
 
