@@ -4,7 +4,7 @@ const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 // fixes issue with applying style issue
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public'));
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
