@@ -57,8 +57,35 @@ let ebay = new Ebay({
     //     console.log(data);
     // });
 
-    ebay.getDeals({
-        limit: 2
+    // ebay.getDeals({
+    //     limit: 12
+    // }).then((data) => {
+    //     console.log("This is the get deals data id: ", data.item[5]);
+    //     console.log("This is the get deals data title: ", data.item[5].title);
+    //     console.log("This is the get deals data Original Price: ", data.item[5].originalPrice);
+    //     console.log("This is the get deals data Price: ", data.item[5].price);
+    // });
+
+    // search button listener
+    var keySearch;
+
+$(".searchButton").on("click", function() {
+    var textBox = $(".searchBox").val()
+    keySearch = textBox;
+});
+
+    console.log(keySearch)
+    
+    var sortBy = "PricePlusShippingLowest";
+
+    ebay.FindItemsByKeywords({
+        keywords: keySearch,
+        sortOrder: sortBy, //https://developer.ebay.com/devzone/finding/callref/extra/fndcmpltditms.rqst.srtordr.html
+        pageNumber: 2,
+        limit: 10
     }).then((data) => {
-        console.log("This is the get deals data: ", data);
+        console.log(data);
+    }, (error) => {
+        console.log(error);
     });
+
