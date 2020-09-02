@@ -125,3 +125,8 @@ router.delete("/api/store/:id", (req, res) => {
 router.get("/policy_a", isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, "../views/stores/policy_a.html"));
 });
+
+// If user rejects the Amazon/Wal-Mart/eBay account privacy policyt page. 
+router.get("/thankyou", isAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "../views/stores/policy_rejected.html"));
+});
