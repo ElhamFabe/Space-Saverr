@@ -114,24 +114,11 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li> -->
       </ul>
-      <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
-        <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="searchBox form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <button class="searchButton" onclick="search()" type="submit" class="btn btn-outline-info btn-rounded waves-effect" id="spaceSearch" value="Submit">Search</button>
-=======
         <button class="searchButton" type="submit" class="btn btn-outline-info btn-rounded waves-effect" id="spaceSearch"> Search</button>
->>>>>>> 91b04a4d0955f0dae27c899e6d1e51336c8844d5
-=======
-
-        <button class="searchButton" type="submit" class="btn btn-outline-info btn-rounded waves-effect" id="spaceSearch" value="Submit">Search</button>
->>>>>>> fb249b59a38a269b33616da96248c84df4750c95
       </form>
-      <!-- Temporary div to put search items into test -->
-      <h4>Items: </h4>
-      <div id="search-items"></div>
-      <!-- Temporary div to put search items into test -->
     </div>
   </nav>
   <main class="main">
@@ -145,32 +132,15 @@
           maiores facere eum dolorum neque?
         </p>
       </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> fb249b59a38a269b33616da96248c84df4750c95
-    </div>
-    <div class="tone-2">
-      <!-- Commented picture because it was throwing an error -Carlo -->
-      <!-- <img src="../public/img/png-clipart-computer-icons-astronaut-astronaut-logo-artwork.png"
-        alt="Space Saver" /> -->
-    </div>
-    </div>
-<<<<<<< HEAD
-=======
     </section>
     <section class="tone-2">
       <img src="../Public/Assets/img/png-clipart-computer-icons-astronaut-astronaut-logo-artwork.png"
         alt="Space Saver" />
     </section>
->>>>>>> 91b04a4d0955f0dae27c899e6d1e51336c8844d5
-=======
->>>>>>> fb249b59a38a269b33616da96248c84df4750c95
   </main>
   <footer class="footer">
       <h1 id="endTail">
-        Space Saverr | saving wallets since 2020&#169;
+        Space Saverr 2020&#169; Created by Dev's to Save Wallets
       </h1>
   </footer>
   <section class="loading">
@@ -322,44 +292,6 @@
       </div>
     </div>
   </div> -->
-
-<!-- Ebay script for search box -->
-<script>
-  const searchItems = document.getElementById('search-items');
-  function renderData(data){
-      const items = data[0].searchResult[0].item;
-      items.forEach((searchItem) => {
-          if(searchItem.title){
-              let element = document.createElement('div');
-              element.textContent = searchItem.title[0];
-              searchItems.appendChild(element);
-          }
-      });
-  }
-  function search(){
-      const searchText = document.getElementById('searchId').value;
-      // clear the existing items.
-      searchItems.innerHTML = '';
-      fetch(`/search?keyword=${searchText}`)
-      .then(response => response.json())
-      .then(data => {
-          console.log(
-          "Title: ", data[0].searchResult[0].item[0].title, "\n", 
-          "Listing Type: ", data[0].searchResult[0].item[0].listingInfo[0].listingType, "\n", 
-          "Ending time: ", data[0].searchResult[0].item[0].listingInfo[0].endTime, "\n", 
-          "Watch count: ", data[0].searchResult[0].item[0].listingInfo[0].watchCount, "\n",
-          "Gallery picture: ", data[0].searchResult[0].item[0].galleryURL, "\n",
-          "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n",
-          "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n",
-          "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n",
-          "Entire data JSON: ", data
-          )
-          // renderData(data); // prints actual data to the page
-      })
-      .catch(error => console.log(error));
-  }
-</script>
-
   <!-- cards end -->
   <!-- footer -->
   <!-- <footer class="footer">
@@ -370,24 +302,6 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
-    <script>
-      let count = 4;
-      $('#spaceSearch').on('click', function (e){
-      e.preventDefault();
-      $('.loading').show();
-      $('.main').hide();
-      $('#spaceCards').hide();
-      var interval = setInterval(function(){
-        count--;
-      if (count === 0){
-        $('.loading').hide();
-        $('.main').show();
-        $('#spaceCards').show();
-    }
-  }, 1000);
-
-  });
-    </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
     crossorigin="anonymous"></script>
@@ -395,7 +309,7 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
   <script src="./js/javascript.js"></script>
-  <!-- <script src="./js/ebay.js"></script> -->
+  <script src="../ebay.js"></script>
 </body>
 
 </html>
