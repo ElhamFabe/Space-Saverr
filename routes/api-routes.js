@@ -14,6 +14,17 @@ module.exports = function(app) {
     });
   });
 
+
+  // Ebay routes
+  app.post("/api/ebay", (req, res) => {
+      console.log("This is the request ",req);
+      console.log("This is the responce ",res);
+    
+    // Sending back a password, even a hashed password, isn't a good idea
+      });
+  // Ebay routes end
+
+
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error

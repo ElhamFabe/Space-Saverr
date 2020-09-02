@@ -1,24 +1,24 @@
-const Ebay = require('ebay-node-api');
+// const Ebay = require('ebay-node-api');
+
+// // let ebay = new Ebay({
+// //     clientID: 'CarloDeF-RutgersC-PRD-b46b9fe23-e9da986d',
+// //     clientSecret: 'PRD-46b9fe237cd6-af92-4748-a77b-e4bb',
+// //     body: {
+// //         grant_type: 'client_credentials',
+// //     //you may need to define the oauth scope
+// //     scope: 'https://api.ebay.com/oauth/api_scope'
+// //     }
+// // });
 
 // let ebay = new Ebay({
 //     clientID: 'CarloDeF-RutgersC-PRD-b46b9fe23-e9da986d',
 //     clientSecret: 'PRD-46b9fe237cd6-af92-4748-a77b-e4bb',
 //     body: {
 //         grant_type: 'client_credentials',
-//     //you may need to define the oauth scope
-//     scope: 'https://api.ebay.com/oauth/api_scope'
+//         scope: 'https://api.ebay.com/oauth/api_scope'
+
 //     }
 // });
-
-let ebay = new Ebay({
-    clientID: 'CarloDeF-RutgersC-PRD-b46b9fe23-e9da986d',
-    clientSecret: 'PRD-46b9fe237cd6-af92-4748-a77b-e4bb',
-    body: {
-        grant_type: 'client_credentials',
-        scope: 'https://api.ebay.com/oauth/api_scope'
-
-    }
-});
 
 
 // ebay.getAccessToken().then((data) => {
@@ -70,13 +70,24 @@ let ebay = new Ebay({
     var keySearch;
     var sortBy = "PricePlusShippingLowest";
 
-$(".searchButton").on("click", function() {
-    var textBox = $(".searchBox").val();
-    keySearch = textBox;
-    searchEbayByKeyword(keySearch, sortBy);
-});
+// $(".searchButton").on("click", function() {
+//     var textBox = $(".searchBox").val();
+//     keySearch = textBox;
+//     searchEbayByKeyword(keySearch, sortBy);
+// });
 
     console.log(keySearch);
+
+    $.post("api/ebay", function (){
+        //js object how ever it is formated in the /api/ebay route
+        //{
+        //     keywords: keySearch,
+        //     sortOrder: sortBy, //https://developer.ebay.com/devzone/finding/callref/extra/fndcmpltditms.rqst.srtordr.html
+        //     pageNumber: 2,
+        //     limit: 10
+        // //}
+        //
+    });
     
 
 
