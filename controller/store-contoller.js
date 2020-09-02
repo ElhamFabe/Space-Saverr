@@ -92,52 +92,62 @@
   //   });
   // });
 
-  // User will land at spacesaver.html after login has been successful with query that will return results with deals from all pages.
-  router.get("/store", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../views/stores/spacesaver.html"));
-  });
+// User will land at spacesaver.html after login has been successful with query that will return results with deals from all pages.
+router.get("/members", isAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/members.html"));
+});
 
-  // If user searches on spacesaver.html, search data will post in this route.
-  router.post("/api/spacesaver", (req, res) => {
-    db.create(
-      ["name_s", "price_s", "reviews_s"],
-      [req.body.name, req.body.price, req.body.reviews],
-      function(result) {
-        res.json({ id: result.insertId });
-      }
-    );
-  });
+// If user searches on spacesaver.html, search data will post in this route.
+router.post("/api/spacesaver", (req, res) => {
+  db.create(
+    ["name_s", "price_s", "reviews_s"],
+    [req.body.name, req.body.price, req.body.reviews],
+    function(result) {
+      res.json({ id: result.insertId });
+    }
+  );
+});
 
-  // If user deletes search on spacesaver.html, search data will be deleted using ID inside Wal-Mart table.
-  router.delete("/api/spacesaver/:id", (req, res) => {
-    var condition = "id=" + req.params.id;
+// If user deletes search on spacesaver.html, search data will be deleted using ID inside Wal-Mart table.
+router.delete("/api/spacesaver/:id", (req, res) => {
+  var condition = "id=" + req.params.id;
 
-    db.delete(condition, function(result) {
-      if (result.affectedRows == 0) {
-        return res.status(404).end();
-      } else {
-        res.status(200).end();
-      }
-    });
+  db.delete(condition, function(result) {
+    if (result.affectedRows == 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
   });
+});
 
-  // If user selects to log-in with Amazon account, this will allow the policy page to be created. 
-  router.get("/policy_a", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../views/stores/policy_a.html"));
-  });
+// If user selects to log-in with Amazon account, this will allow the policy page to be created. 
+router.get("/policy_a", isAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/privacypolicy.html"));
+});
 
-  // If user rejects the Amazon/Wal-Mart/eBay account privacy policy page. 
-  router.get("/thankyou", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../views/stores/policy_rejected.html"));
-  });
+// If user selects to log-in with Amazon account, this will allow the policy page to be created. 
+router.get("/policy_e", isAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/policy_e.html"));
+});
 
-  // If user searches on spacesaver.html, search data will post in this route.
-  router.post("/api/policy", (req, res) => {
-    db.create(
-      ["p_true"],
-      [req.body.true],
-      function(result) {
-        res.json({ id: result.insertId });
-      }
-    );
-  });
+// If user selects to log-in with Amazon account, this will allow the policy page to be created. 
+router.get("/policy_w", isAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/policy_w.html"));
+});
+
+// If user rejects the Amazon/Wal-Mart/eBay account privacy policy page. 
+router.get("/thankyou", isAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/policy_rejected.html"));
+});
+
+  // If user rejects or accept the privacy policies, this api will feed with true or false per result's Id.
+router.post("/api/policy", (req, res) => {
+  db.create(
+    ["p_true"],
+    [req.body.true],
+    function(result) {
+      res.json({ id: result.insertId });
+    }
+  );
+});
