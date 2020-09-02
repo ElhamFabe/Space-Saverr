@@ -21,11 +21,11 @@ let ebay = new Ebay({
 });
 
 
-ebay.getAccessToken().then((data) => {
-    console.log(data); // data.access_token
-}, (error) => {
-    console.log(error);
-});
+// ebay.getAccessToken().then((data) => {
+//     console.log(data); // data.access_token
+// }, (error) => {
+//     console.log(error);
+// });
 
 // ebay.findItemsByKeywords({
 //     keywords: 'Garmin nuvi 1300 Automotive GPS Receiver',
@@ -58,8 +58,7 @@ ebay.getAccessToken().then((data) => {
     // });
 
     ebay.getDeals({
-        title: "iphone",
-        limit: 10
+        limit: 2
     }).then((data) => {
         console.log("This is the get deals data: ", data);
     });
