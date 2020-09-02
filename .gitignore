@@ -2,6 +2,7 @@ testAPI
 node_modules
 .env
 ds_store
+/models/index.js
 
 # Logs
 logs
