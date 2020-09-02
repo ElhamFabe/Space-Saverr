@@ -11,6 +11,7 @@ module.exports = function(app) {
       res.redirect("/members");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
+    //should route landing page//
   });
 
   app.get("/login", (req, res) => {
