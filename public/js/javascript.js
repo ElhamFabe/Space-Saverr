@@ -6,6 +6,11 @@
 //         console.log(textBox);
 //     });
 
+
+
+
+// });
+
 // ajax for laoding and cards
 // $('#wait').ajaxStart(function() {
 //     $(this).show();
