@@ -17,7 +17,7 @@ if (config.use_env_variable) {
   var sequelize = new Sequelize(
     config.database,
     config.username,
-    process.env.Space_saver,
+    process.env.MYSQL_KEY,
     config
   );
 }
