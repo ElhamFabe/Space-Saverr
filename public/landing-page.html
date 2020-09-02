@@ -351,7 +351,7 @@
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
     <script>
-      let count = 4;
+      var count = 4;
       $('#spaceSearch').on('click', function (e){
       e.preventDefault();
       $('.loading').show();
@@ -359,10 +359,11 @@
       $('#spaceCards').hide();
       var interval = setInterval(function(){
         count--;
-      if (count === 0){
+      if (count === -1){
         $('.loading').hide();
         $('.main').show();
         $('#spaceCards').show();
+        counter = 4;
     }
   }, 1000);
 
