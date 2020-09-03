@@ -8,10 +8,6 @@ var query = queryInterface.createTable('Search', {
                 autoIncrement: true,
                 primaryKey: true
             },
-            name: {
-                type: DataTypes.STRING, 
-                allowNull: false
-            }, 
             title: {
                 type: DataTypes.STRING,
                 allowNull: false
@@ -20,11 +16,11 @@ var query = queryInterface.createTable('Search', {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            imgUrl: {
+            imgurl: {
                 type: DataTypes.STRING,
                 allowNull: false
             }, 
-            item_description: {
+            shipping_type: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
@@ -36,8 +32,8 @@ var query = queryInterface.createTable('Search', {
                 type: DataTypes.DECIMAL(10,2),
                 allowNull: false
             },
-            ranking: {
-                type: DataTypes.DECIMAL(10,2),
+            top_rated_listing: {
+                type: DataTypes.BOOLEAN,
                 allowNull: false
             }
         });
