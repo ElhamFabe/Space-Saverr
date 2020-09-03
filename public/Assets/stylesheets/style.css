@@ -10,8 +10,6 @@ html {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 12px;
   color: rgb(41, 40, 40);
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 header{
   width: 100%;
@@ -31,16 +29,62 @@ a {
   left:0;
   bottom:0;
 }
+/* if we want searchbar next to the logo */
+.buttonIn{
+  width: 100%;
+  /* position: absolute; */
+  display: flex;
+}
 #searchId {
-  margin-top: 30rem;
+  /* margin-top: 20rem;
+  margin-left: 5rem;
+   */
+/* position: absolute;
+top:0;
+border-radius:1rem;
+right:0px;
+/* z-index: 2; */
+/* border:none;
+top: 15rem;
+height: px;
+cursor: pointer;
+color: whitesmoke;
+background-color: whitesmoke;
+transform: translateX(2px);  */
+
+width: 100%;
+border: 3px solid lightslategrey;
+border-right: none;
+padding: 5px;
+height: 3rem;;
+border-radius: 5px 0 0 5px;
+outline: none;
+color: black;
+  }
+  #spaceSearch { 
+/* top:0;
+background-color: whitesmoke;
+border-radius: 2rem;
+border: 3px solid lightsteelblue;
+text-align: center; */
+width: 40px;
+  height: 36px;
+  border: 1px solid lightslategray;
+  background: lightslategray;
   text-align: center;
-  height: 3rem;
-  width: 800px;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+
+  }
+.wrapper {
+  position: relative;
+  top: 10%;
+  width: 100%;
 }
-#spaceSearch {
-  margin-top: 30rem;
-  
-}
+
+
 .tone-1{
   background-color: whitesmoke;
   height: 100vh;
@@ -53,11 +97,12 @@ a {
   flex: 1;
 }
 .tone-2 img{
-  width:100%;
+  width:50%;
   position: absolute;
-  top: 50%;
-  left: -15rem;
-  transform: translateY(-50%);
+  margin-top: auto;
+  /* top: 50%; */
+  /* left: -15rem; */
+  /* transform: translateY(-50%); */
 }
 .product-info {
   display: flex;
