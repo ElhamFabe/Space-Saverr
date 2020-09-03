@@ -13,7 +13,7 @@
       });
   }
 
-  var catID = "";
+//   var catID = "";
 
   function search(){
       const searchText = document.getElementById('searchId').value;
@@ -22,7 +22,6 @@
       fetch(`/search?keyword=${searchText}`)
       .then(response => response.json())
       .then(data => {
-          catId = data[0].searchResult[0].item[0].primaryCategory[0].categoryId;
           console.log(
           "Title: ", data[0].searchResult[0].item[0].title, "\n",
           "Product ID: ", data[0].searchResult[0].item[0].itemId[0], "\n",
@@ -41,15 +40,16 @@
           // renderData(data); // prints actual data to the page
       })
       .catch(error => console.log(error));
-
   }
 
-  function searchDeals(){
-    fetch(`/search?category_ids=${catID}`)
-    .then(response => response.json())
-      .then(data => {
-          console.log(data);
-          catID = "";
-      });
-  }
-  module.exports = catID;
+//   function searchDeals(){
+//     fetch(`/deal_item?category_ids=${catID}`)
+//     .then(response => response.json())
+//       .then(data => {
+//           console.log(data);
+//           catID = "";
+//       })
+//       .catch(error => console.log(error));
+//   }
+
+
