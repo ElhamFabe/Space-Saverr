@@ -339,6 +339,13 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+.row1 {
+  margin-top: 5rem;
+}
+
+.row2{
+  margin-bottom:3rem;
+}
 
 #dealCards {
   font-size: 2rem;
