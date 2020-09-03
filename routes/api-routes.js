@@ -4,7 +4,7 @@ const passport = require("../config/passport");
 const Ebay = require('ebay-node-api');
 const path = require('path');
 const express = require('express');
-var catID = require('../public/js/ebay')
+// var catID = require('../public/js/ebay');
 
 const ebay = new Ebay({
   clientID: "CarloDeF-RutgersC-PRD-b46b9fe23-e9da986d",
@@ -55,16 +55,19 @@ app.use('/search', function(req, res){
     });
 });
 
-app.use('/search', function(req, res){
-  ebay.getDeals({
-    limit: 2, // no of deals per request
-    countryCode:'ebay-de', 
-    eBayCatId: catID // deal for specific category id
-}).then((data) => {
-    console.log(data);
-    catID = "";
-});
-});
+// app.use('/search', function(req, res){
+//   ebay.getDeals({
+//     limit: 2, // no of deals per request
+//     countryCode:'ebay-us', 
+//     eBayCatId: catID // deal for specific category id
+// }).then((data) => {
+//   catID = "";
+//   return res.status(200).send(data);
+// }, (error) => {
+//   catID = "";
+//   return res.status(404).send(data);
+// });
+// });
   // Ebay routes end
 
 
