@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="Space Saver" content="Match & Save App" />
+  <meta name="Space Saver" content="Search & Save App" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
@@ -14,68 +14,8 @@
 </head>
 
 <body>
-  <!-- Amazon button -->
-  <!-- <li>
-              <a href id="LoginWithAmazon">
-                <img
-                  border="0"
-                  alt="Login with Amazon"
-                  src="https://images-na.ssl-images-amazon.com/images/G/01/lwa/btnLWA_gold_156x32.png"
-                  width="156"
-                  height="32"
-                />
-              </a> -->
-  <!-- <div id="amazon-root"></div>
-              <script type="text/javascript">
-                window.onAmazonLoginReady = function() {
-                  amazon.Login.setClientId("YOUR-CLIENT-ID");
-                };
-                (function(d) {
-                  var a = d.createElement("script");
-                  a.type = "text/javascript";
-                  a.async = true;
-                  a.id = "amazon-login-sdk LoginWithAmazon";
-                  a.src = "https://assets.loginwithamazon.com/sdk/na/login1.js";
-                  d.getElementById("amazon-root").appendChild(a);
-                })(document);
-              </script>
-              <script type="text/javascript">
-                document.getElementById(
-                  "LoginWithAmazon"
-                ).onclick = function() {
-                  options = {};
-                  options.scope = "profile";
-                  options.scope_data = {
-                    profile: { essential: false },
-                  };
-                  amazon.Login.authorize(
-                    options,
-                    "https://www.example.com/handle_login.php"
-                  );
-                  return false;
-                };
-              </script>
-            </li>
-            end of amazon button -->
-  <!-- </ul>
-        </div>
-        <div class="nav-right">
-          <ul>
-            <li>
-              <a href="#">
-                <i class="fas fa-search"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#"> <i class="fas fa-user"></i> Account </a>
-            </li>
-            <li>
-              <a href="#"> <i class="fas fa-cart"></i> Cart </a>
-            </li>
-          </ul>
-        </div>
-      </nav> -->
-  <!-- </header> -->
+  
+ <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/" class="home">Space Saverr</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -103,19 +43,17 @@
             <a class="dropdown-item" href="#">Log Out</a>
           </div>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li> -->
       </ul>
-      <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
+      <!-- serach bar can go inside menu bar -->
+      <!-- <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
         <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search" placeholder="Search"
-          aria-label="Search">
+          aria-label="Search" size="80" >
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
 
-        <button class="searchButton btn btn-outline-info btn-rounded waves-effect" onclick="search()" type="submit"
+        <!-- <button class="searchButton btn btn-outline-info btn-rounded waves-effect" onclick="search()" type="submit"
            id="spaceSearch" value="Submit">Search</button>
 
-      </form>
+      </form> --> 
       <!-- Temporary div to put search items into test -->
       <h4></h4>
       <div id="search-items"></div>
@@ -123,8 +61,9 @@
     </div>
   </nav>
   <main class="main">
+  
     <section class="tone-1">
-      <div class="product-info">
+      <article class="product-info">
         <h1 id="landingH1">Space Saver</h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia
@@ -132,17 +71,27 @@
           minus ullam perspiciatis repudiandae sequi consectetur assumenda,
           maiores facere eum dolorum neque?
         </p>
-      </div>
+      </article>
     </section>
     <section class="tone-2">
       <h1 id="landingH1">Logo goes here</h1>
       <!-- <img src="../Public/Assets/img/png-clipart-computer-icons-astronaut-astronaut-logo-artwork.png"
         alt="Space Saver" /> -->
+        <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
+          <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search" placeholder="Search"
+            aria-label="Search" size="80" >
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
+  
+          <button class="searchButton btn btn-outline-info btn-rounded waves-effect" onclick="search()" type="submit"
+             id="spaceSearch" value="Submit">Search</button>
+  
+        </form>
     </section>
+   
   </main>
   <footer class="footer">
     <h1 id="endTail">
-      &#169; Space Saverr  | saving wallets since 2020
+      &#169; Space Saverr | saving wallets since 2020
     </h1>
   </footer>
   <section class="loading">
@@ -169,8 +118,8 @@
   <!-- cards beginning -->
   <div class="wrapper" id="spaceCards">d
     <h1 id='dealCards'>Space Saver Deals!</h1>
-    <div class="row row1">
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+    <section class="row row1">
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
             <div class="inner">
@@ -185,8 +134,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      </article>
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front">
             <div class="inner">
@@ -201,9 +150,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/502/502/)">
             <div class="inner">
@@ -217,8 +166,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      </article>
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
             <div class="inner">
@@ -232,13 +181,13 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  <br>
-  <br>
-  <br>
-    <div class="row">
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      </article>
+    </section>
+    <br>
+    <br>
+    <br>
+    <section class="row row2">
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/504/504/)">
             <div class="inner">
@@ -252,8 +201,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      </article>
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front">
             <div class="inner">
@@ -267,8 +216,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      </article>
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front">
             <div class="inner">
@@ -282,8 +231,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      </article>
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front">
             <div class="inner">
@@ -297,12 +246,11 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+      </article>
+    </section>
   </div>
   <!-- cards end -->
-
+  <!-- loading feature -->
   <section class="loading">
     <article class='body'>
       <span>
@@ -324,135 +272,6 @@
     </article>
     <h1>Fetching Deals</h1>
   </section>
-  <!-- cards beginning -->
-  <!-- <div class="wrapper" id="spaceCards">
-    <h1 id='dealCards'>Space Saver Deals!</h1>
-      <div class="cols">
-        <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-          <div class="container">
-            <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
-              <div class="inner">
-                <p>amazon</p>
-                <span>Lorem ipsum</span>
-              </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
-                </p>
-              </div>
-            </div>
-          </div>
-        <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-          <div class="container">
-            <div class="front">
-              <div class="inner">
-                <p>amazon</p>
-                <span>Lorem ipsum</span>
-              </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front" style="background-image: url(https://unsplash.it/502/502/)">
-            <div class="inner">
-              <p>amazon</p>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
-            <div class="inner">
-              <p>amazon</p>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front" style="background-image: url(https://unsplash.it/504/504/">
-            <div class="inner">
-              <p>Ebay</p>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front">
-            <div class="inner">
-              <p>Ebay</p>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front">
-            <div class="inner">
-              <p>Ebay</p>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front">
-            <div class="inner">
-              <p>Ebay</p>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

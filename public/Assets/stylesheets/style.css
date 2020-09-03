@@ -10,6 +10,8 @@ html {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 12px;
   color: rgb(41, 40, 40);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 header{
   width: 100%;
@@ -28,6 +30,12 @@ a {
   right:0;
   left:0;
   bottom:0;
+}
+.input {
+  margin-top: 30rem;
+  text-align: center;
+  height: 10rem;
+  width: 800px;
 }
 .tone-1{
   background-color: whitesmoke;
