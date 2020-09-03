@@ -31,6 +31,12 @@ a {
   left:0;
   bottom:0;
 }
+.input {
+  margin-top: 30rem;
+  text-align: center;
+  height: 10rem;
+  width: 800px;
+}
 .tone-1{
   background-color: whitesmoke;
   height: 100vh;
