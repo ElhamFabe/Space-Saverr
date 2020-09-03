@@ -1,6 +1,8 @@
 
 //   DO NOT TOUCH THIS IVAN, YOU SON OF A GUN!
-  
+
+
+
   const searchItems = document.getElementById('search-items');
   function renderData(data){
       const items = data[0].searchResult[0].item;
@@ -37,85 +39,97 @@
           "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n",
           "Entire data JSON: ", data
           );
-          deals();
+          deals(data[0].searchResult[0].item[0].primaryCategory[0].categoryId);
           // renderData(data); // prints actual data to the page
       })
       .catch(error => console.log(error));
   }
 
 
-  function deals(){
-    fetch(`ebay-us?eBayCatId=15032`) // ${searchText}
-    .then(response => response.json())
+
+
+  function deals(catID){  
+    fetch('http://www.ebay.com/rps/feed/v1.1/ebay-us?eBayCatId=' + catID)
+// ${searchText}
+    .then(response => response.text())
+    .then(response => JSON.stringify(response))
     .then(data => {
-        console.log(
-        "Entire deals JSON: ", data
-        );
-        // renderData(data); // prints actual data to the page
+        parser = new DOMParser();
+        doc = parser.parseFromString(data, "text/html");
+        // console.log("Engage: ", doc.getElementById("html").innerHTML);
+        console.log(typeof doc, doc);
+
+// Test with a string.
+json = mapDOM(doc, true);
+let jsonResults = JSON.parse(json);
+console.log("This is the JSON object: ", JSON.parse(json));
+
+function mapDOM(element, json) {
+    var treeObject = {};
+
+    // If string convert to document Node
+    if (typeof element === "string") {
+        if (window.DOMParser) {
+              parser = new DOMParser();
+              docNode = parser.parseFromString(element,"text/xml");
+        } else { // Microsoft strikes again
+              docNode = new ActiveXObject("Microsoft.XMLDOM");
+              docNode.async = false;
+              docNode.loadXML(element); 
+        } 
+        element = docNode.firstChild;
+    }
+
+    //Recursively loop through DOM elements and assign properties to object
+    function treeHTML(element, object) {
+        object["type"] = element.nodeName;
+        var nodeList = element.childNodes;
+        if (nodeList != null) {
+            if (nodeList.length) {
+                object["content"] = [];
+                for (var i = 0; i < nodeList.length; i++) {
+                    if (nodeList[i].nodeType == 3) {
+                        object["content"].push(nodeList[i].nodeValue);
+                    } else {
+                        object["content"].push({});
+                        treeHTML(nodeList[i], object["content"][object["content"].length -1]);
+                    }
+                }
+            }
+        }
+        if (element.attributes != null) {
+            if (element.attributes.length) {
+                object["attributes"] = {};
+                for (var i = 0; i < element.attributes.length; i++) {
+                    object["attributes"][element.attributes[i].nodeName] = element.attributes[i].nodeValue;
+                }
+            }
+        }
+    }
+    treeHTML(element, treeObject);
+
+    return (json) ? JSON.stringify(treeObject) : treeObject;
+}
+
+// Logs top 10 deals sorted by category that the user searched
+console.log("We found " + (jsonResults.content[0].content[1].content[2].content.length - 1) + " deals for your searched category!");
+// test
+for (var i = 1; i < jsonResults.content[0].content[1].content[2].content.length; i++) {
+    for (var j = 0; j < 11; j++) {
+        console.log(jsonResults.content[0].content[1].content[2].content[i].content[j].type, ": " ,jsonResults.content[0].content[1].content[2].content[i].content[j].content);
+        if (jsonResults.content[0].content[1].content[2].content[i].content[j].type === "SHIPPINGCOST") {
+            console.log("==================================================");
+        }
+    }
+}
+
+    
+
+
     })
     .catch(error => console.log(error));
 }
 
+
+
 // //   http://www.ebay.com/rps/feed/v1.1/ebay-us/
-
-// xmlToJson = function(xml) {
-//     var obj = {};
-//     if (xml.nodeType == 1) {                
-//         if (xml.attributes.length > 0) {
-//             obj["@attributes"] = {};
-//             for (var j = 0; j < xml.attributes.length; j++) {
-//                 var attribute = xml.attributes.item(j);
-//                 obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-//             }
-//         }
-//     } else if (xml.nodeType == 3) { 
-//         obj = xml.nodeValue;
-//     }            
-//     if (xml.hasChildNodes()) {
-//         for (var i = 0; i < xml.childNodes.length; i++) {
-//             var item = xml.childNodes.item(i);
-//             var nodeName = item.nodeName;
-//             if (typeof (obj[nodeName]) == "undefined") {
-//                 obj[nodeName] = xmlToJson(item);
-//             } else {
-//                 if (typeof (obj[nodeName].push) == "undefined") {
-//                     var old = obj[nodeName];
-//                     obj[nodeName] = [];
-//                     obj[nodeName].push(old);
-//                 }
-//                 obj[nodeName].push(xmlToJson(item));
-//             }
-//         }
-//     }
-//     return obj;
-// }
-
-
-
-// function dealsAPI() {
-//     fetch('http://www.ebay.com/rps/feed/v1.1/ebay-us?eBayCatId=15032')
-//         .then(function(response) {
-//             var o = JSON.stringify(xmlToJson(response));
-//             console.log("This is the response for deals: ", o);
-//         }).then(function(response) {
-    
-//             // function callNews(myNews, myindex) {
-//             //           var title = myNews.articles[myindex].title
-//             //           var image = myNews.articles[myindex].image
-//             //           var articleText = myNews.articles[myindex].description
-//             //           var link = myNews.articles[myindex].url
-//             //           var timeAgo = myNews.articles[myindex].publishedAt
-//             //           var appendMe = $( ".news[value="+ myindex +"]" )
-//             //           var titleText = $(".textNews[value="+ myindex +"]").text(title)
-//             //           var imageSrc = $(".imageNews[value="+ myindex +"]").attr("src", image)
-//             //           var articlesHTML = $(".articleNews[value="+ myindex +"]").text(articleText)
-//             //           var linkLink = $(".linkNews[value="+ myindex +"]").attr("href", link)
-//             //           var linkText = $(".linkNews[value="+ myindex +"]").text(link)
-//             //           var timeAgoText = $(".timeAgo[value="+ myindex +"]").text(timeAgo)
-//             //           appendMe.append(titleText, imageSrc, articlesHTML, linkLink, linkText, timeAgoText)
-//             //           }
-//             //           for (var i = 0; i < 3; i++) {
-//             //             callNews(myJson, i)  
-//             //           }
-//                     });
-//                 }
