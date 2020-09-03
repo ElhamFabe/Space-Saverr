@@ -11,7 +11,7 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("/members");
     }
-    res.sendFile(path.join(__dirname, "../public/landing-page.html"));
+    res.sendFile(path.join(__dirname, "../public/index.html"));
     //should route landing page//
   });
   
@@ -38,7 +38,7 @@ module.exports = function(app) {
   // });
 
   app.get("/members", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/landing-page.html"));
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 };
 

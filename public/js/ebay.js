@@ -13,6 +13,8 @@
       });
   }
 
+//   var catID = "";
+
   function search(){
       const searchText = document.getElementById('searchId').value;
       // clear the existing items.
@@ -39,3 +41,15 @@
       })
       .catch(error => console.log(error));
   }
+
+//   function searchDeals(){
+//     fetch(`/deal_item?category_ids=${catID}`)
+//     .then(response => response.json())
+//       .then(data => {
+//           console.log(data);
+//           catID = "";
+//       })
+//       .catch(error => console.log(error));
+//   }
+
+
