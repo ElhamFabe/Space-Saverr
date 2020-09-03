@@ -2,10 +2,9 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(/* ... */);
 const queryInterface = sequelize.getQueryInterface();
 
-var query = queryInterface.createTable('Search', {
+module.exports = queryInterface.createTable('Search', {
             id: {
                 type: DataTypes.INTEGER,
-                autoIncrement: true,
                 primaryKey: true
             },
             title: {
@@ -16,26 +15,45 @@ var query = queryInterface.createTable('Search', {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            imgurl: {
+            category_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            gallery_picture: {
                 type: DataTypes.STRING,
                 allowNull: false
             }, 
+            listing_type: {
+                type: DataTypes.STRING,
+                allowNull: false
+            }, 
+            current_price: {
+                type: DataTypes.DECIMAL(10,2),
+                allowNull: false
+            },
+            ending_time: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            watch_count: {
+                type: DataTypes.STRING,
+                allowNull: false
+            }, 
+            returns_accepted: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false
+            },
             shipping_type: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            discount: {
-                type: DataTypes.DECIMAL(10,2),
+            url_link: {
+                type: DataTypes.STRING, 
                 allowNull: false
-            },
-            price: {
-                type: DataTypes.DECIMAL(10,2),
-                allowNull: false
-            },
+            },           
             top_rated_listing: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false
             }
         });
 
-module.exports = query;
