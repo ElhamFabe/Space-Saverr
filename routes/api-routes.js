@@ -4,6 +4,7 @@ const passport = require("../config/passport");
 const Ebay = require('ebay-node-api');
 const path = require('path');
 const express = require('express');
+var catID = require('../public/js/ebay')
 
 const ebay = new Ebay({
   clientID: "CarloDeF-RutgersC-PRD-b46b9fe23-e9da986d",
@@ -28,7 +29,8 @@ module.exports = function(app) {
   // Ebay routes
 
 // load index.html
-app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/landing-page.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/index.html')));
+
 
 // create a route to search items in eBay. 
 app.use('/search', function(req, res){
@@ -51,6 +53,17 @@ app.use('/search', function(req, res){
     }, (error) => {
         return res.status(404).send(data);
     });
+});
+
+app.use('/search', function(req, res){
+  ebay.getDeals({
+    limit: 2, // no of deals per request
+    countryCode:'ebay-de', 
+    eBayCatId: catID // deal for specific category id
+}).then((data) => {
+    console.log(data);
+    catID = "";
+});
 });
   // Ebay routes end
 
