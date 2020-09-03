@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="Space Saver" content="Match & Save App" />
+  <meta name="Space Saver" content="Search & Save App" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
@@ -103,17 +103,12 @@
             <a class="dropdown-item" href="#">Log Out</a>
           </div>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li> -->
       </ul>
       <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
         <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search" placeholder="Search"
           aria-label="Search">
-        <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
-
-        <button class="searchButton btn btn-outline-info btn-rounded waves-effect" onclick="search(); searchDeals();" type="submit"
-           id="spaceSearch" value="Submit">Search</button>
+        <button class="searchButton btn btn-outline-info btn-rounded waves-effect" onclick="search(); searchDeals();"
+          type="submit" id="spaceSearch" value="Submit">Search</button>
 
       </form>
       <!-- Temporary div to put search items into test -->
@@ -124,7 +119,7 @@
   </nav>
   <main class="main">
     <section class="tone-1">
-      <div class="product-info">
+      <article class="product-info">
         <h1 id="landingH1">Space Saver</h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia
@@ -132,7 +127,7 @@
           minus ullam perspiciatis repudiandae sequi consectetur assumenda,
           maiores facere eum dolorum neque?
         </p>
-      </div>
+      </article>
     </section>
     <section class="tone-2">
       <h1 id="landingH1">Logo goes here</h1>
@@ -142,7 +137,7 @@
   </main>
   <footer class="footer">
     <h1 id="endTail">
-      &#169; Space Saverr  | saving wallets since 2020
+      &#169; Space Saverr | saving wallets since 2020
     </h1>
   </footer>
   <section class="loading">
@@ -169,7 +164,7 @@
   <!-- cards beginning -->
   <div class="wrapper" id="spaceCards">d
     <h1 id='dealCards'>Space Saver Deals!</h1>
-    <div class="row row1">
+    <section class="row row1">
       <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
@@ -233,17 +228,12 @@
           </div>
         </div>
       </div>
-    </div>
-<<<<<<< HEAD:public/index.html
-  <br>
-  <br>
-  <br>
-    <div class="row">
-=======
-  
-    <div class="row row2">
->>>>>>> d7f1e39147b33ad17a9590a23bcd53a1dcd3354f:public/landing-page.html
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+    </section>
+    <br>
+    <br>
+    <br>
+    <section class="row row2">
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/504/504/)">
             <div class="inner">
@@ -257,8 +247,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      </article>
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front">
             <div class="inner">
@@ -272,8 +262,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      </article>
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front">
             <div class="inner">
@@ -287,8 +277,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+      </article>
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front">
             <div class="inner">
@@ -302,12 +292,11 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+      </article>
+    </section>
   </div>
   <!-- cards end -->
-
+  <!-- loading feature -->
   <section class="loading">
     <article class='body'>
       <span>
@@ -329,7 +318,7 @@
     </article>
     <h1>Fetching Deals</h1>
   </section>
- 
+
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
