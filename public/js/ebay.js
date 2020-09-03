@@ -13,6 +13,8 @@
       });
   }
 
+  var catID = "";
+
   function search(){
       const searchText = document.getElementById('searchId').value;
       // clear the existing items.
@@ -20,6 +22,7 @@
       fetch(`/search?keyword=${searchText}`)
       .then(response => response.json())
       .then(data => {
+          catId = data[0].searchResult[0].item[0].primaryCategory[0].categoryId;
           console.log(
           "Title: ", data[0].searchResult[0].item[0].title, "\n",
           "Product ID: ", data[0].searchResult[0].item[0].itemId[0], "\n",
@@ -38,4 +41,7 @@
           // renderData(data); // prints actual data to the page
       })
       .catch(error => console.log(error));
+
   }
+
+  module.exports = catID;

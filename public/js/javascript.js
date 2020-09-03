@@ -10,7 +10,7 @@ var interval = setInterval(function(){
   count--;
 if (count === -1){
   $('.loading').hide();
-//   $('.main').hide();
+  $('.main').hide();
   $('#spaceCards').show();
   counter = 4;
 }

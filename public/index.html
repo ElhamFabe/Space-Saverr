@@ -112,12 +112,12 @@
           aria-label="Search">
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
 
-        <button class="searchButton" onclick="search()" type="submit"
-          class="btn btn-outline-info btn-rounded waves-effect" id="spaceSearch" value="Submit">Search</button>
+        <button class="searchButton btn btn-outline-info btn-rounded waves-effect" onclick="search(); searchDeals();" type="submit"
+           id="spaceSearch" value="Submit">Search</button>
 
       </form>
       <!-- Temporary div to put search items into test -->
-      <h4>Items: </h4>
+      <h4></h4>
       <div id="search-items"></div>
       <!-- Temporary div to put search items into test -->
     </div>
@@ -167,7 +167,7 @@
     <h1>Fetching Deals</h1>
   </section>
   <!-- cards beginning -->
-  <div class="wrapper" id="spaceCards">
+  <div class="wrapper" id="spaceCards">d
     <h1 id='dealCards'>Space Saver Deals!</h1>
     <div class="row">
       <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
@@ -234,7 +234,9 @@
         </div>
       </div>
     </div>
-  
+  <br>
+  <br>
+  <br>
     <div class="row">
       <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
@@ -465,6 +467,11 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
   <script src="./js/javascript.js"></script>
+  <script>
+    $('.loading').hide();
+    $('.main').show();
+    $('#spaceCards').hide();
+  </script>
 
   <!-- <script src="./js/ebay.js"></script> -->
 </body>
