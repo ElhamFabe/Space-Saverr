@@ -44,4 +44,7 @@
 
   }
 
+  function searchDeals(){
+      
+  }
   module.exports = catID;
