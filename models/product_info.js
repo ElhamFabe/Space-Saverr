@@ -1,8 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize(/* ... */);
-const queryInterface = sequelize.getQueryInterface();
-
-module.exports = queryInterface.createTable('product_info', {
+module.exports = (sequelize, DataTypes) => {
+    var Product_info = sequelize.define('product_info', {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true
@@ -56,4 +53,5 @@ module.exports = queryInterface.createTable('product_info', {
                 allowNull: false
             }
         });
-
+        return Product_info; 
+    };

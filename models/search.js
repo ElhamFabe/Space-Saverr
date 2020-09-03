@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
     var Search = sequelize.define("searches", {
         id: {
             type: DataTypes.INTEGER,
