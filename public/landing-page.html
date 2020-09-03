@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="./Assets/stylesheets/style.css" />
   <title>Space Saverr | Search & Save App</title>
 </head>
+
 <body>
   <!-- Amazon button -->
   <!-- <li>
@@ -106,10 +108,12 @@
         </li> -->
       </ul>
       <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
-        <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search" placeholder="Search" aria-label="Search">
+        <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search" placeholder="Search"
+          aria-label="Search">
         <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
 
-        <button class="searchButton" onclick="search()" type="submit" class="btn btn-outline-info btn-rounded waves-effect" id="spaceSearch" value="Submit">Search</button>
+        <button class="searchButton" onclick="search()" type="submit"
+          class="btn btn-outline-info btn-rounded waves-effect" id="spaceSearch" value="Submit">Search</button>
 
       </form>
       <!-- Temporary div to put search items into test -->
@@ -137,9 +141,9 @@
     </section>
   </main>
   <footer class="footer">
-      <h1 id="endTail">
-        Space Saverr | saving wallets since 2020&#169;
-      </h1>
+    <h1 id="endTail">
+      &#169; Space Saverr  | saving wallets since 2020
+    </h1>
   </footer>
   <section class="loading">
     <article class='body'>
@@ -163,42 +167,43 @@
     <h1>Fetching Deals</h1>
   </section>
   <!-- cards beginning -->
-  <!-- <div class="wrapper" id="spaceCards">
+  <div class="wrapper" id="spaceCards">
     <h1 id='dealCards'>Space Saver Deals!</h1>
-      <div class="cols">
-        <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-          <div class="container">
-            <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
-              <div class="inner">
-                <p>amazon</p>
-                <span>Lorem ipsum</span>
-              </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
-                </p>
-              </div>
+    <div class="row">
+      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
+            <div class="inner">
+              <p>amazon</p>
+              <span>Lorem ipsum</span>
             </div>
           </div>
-        <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-          <div class="container">
-            <div class="front">
-              <div class="inner">
-                <p>amazon</p>
-                <span>Lorem ipsum</span>
-              </div>
-            </div>
-            <div class="back">
-              <div class="inner">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
-                </p>
-              </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front">
+            <div class="inner">
+              <p>amazon</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/502/502/)">
             <div class="inner">
@@ -213,7 +218,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
             <div class="inner">
@@ -228,9 +233,12 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+    </div>
+  
+    <div class="row">
+      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
-          <div class="front" style="background-image: url(https://unsplash.it/504/504/">
+          <div class="front" style="background-image: url(https://unsplash.it/504/504/)">
             <div class="inner">
               <p>Ebay</p>
               <span>Lorem ipsum</span>
@@ -243,22 +251,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front">
-            <div class="inner">
-              <p>Ebay</p>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front">
             <div class="inner">
@@ -273,7 +266,22 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4" ontouchstart="this.classList.toggle('hover');">
+      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front">
+            <div class="inner">
+              <p>Ebay</p>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front">
             <div class="inner">
@@ -289,14 +297,10 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
+  </div>
   <!-- cards end -->
-  <!-- footer -->
-  <!-- <footer class="footer">
-    <h1 id="endTail">
-      Space Saverr 2020&#169;
-    </h1>
-  </footer> -->
+
   <section class="loading">
     <article class='body'>
       <span>
@@ -447,65 +451,12 @@
     </div>
   </div> -->
 
-<!-- Ebay script for search box -->
-<script>
-  const searchItems = document.getElementById('search-items');
-  function renderData(data){
-      const items = data[0].searchResult[0].item;
-      items.forEach((searchItem) => {
-          if(searchItem.title){
-              let element = document.createElement('div');
-              element.textContent = searchItem.title[0];
-              searchItems.appendChild(element);
-          }
-      });
-  }
-  function search(){
-      const searchText = document.getElementById('searchId').value;
-      // clear the existing items.
-      searchItems.innerHTML = '';
-      fetch(`/search?keyword=${searchText}`)
-      .then(response => response.json())
-      .then(data => {
-          console.log(
-          "Title: ", data[0].searchResult[0].item[0].title, "\n", 
-          "Listing Type: ", data[0].searchResult[0].item[0].listingInfo[0].listingType, "\n", 
-          "Ending time: ", data[0].searchResult[0].item[0].listingInfo[0].endTime, "\n", 
-          "Watch count: ", data[0].searchResult[0].item[0].listingInfo[0].watchCount, "\n",
-          "Gallery picture: ", data[0].searchResult[0].item[0].galleryURL, "\n",
-          "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n",
-          "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n",
-          "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n",
-          "Entire data JSON: ", data
-          )
-          // renderData(data); // prints actual data to the page
-      })
-      .catch(error => console.log(error));
-  }
-</script>
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
-    <script>
-      var count = 4;
-      $('#spaceSearch').on('click', function (e){
-      e.preventDefault();
-      $('.loading').show();
-      $('.main').hide();
-      $('#spaceCards').hide();
-      var interval = setInterval(function(){
-        count--;
-      if (count === -1){
-        $('.loading').hide();
-        $('.main').show();
-        $('#spaceCards').show();
-        counter = 4;
-    }
-  }, 1000);
 
-  });
-    </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
     crossorigin="anonymous"></script>

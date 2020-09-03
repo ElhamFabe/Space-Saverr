@@ -2,6 +2,7 @@ testAPI
 node_modules
 .env
 /models/index.js
+config/config.js
 
 # Logs
 logs
