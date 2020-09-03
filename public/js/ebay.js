@@ -37,19 +37,85 @@
           "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n",
           "Entire data JSON: ", data
           );
+          deals();
           // renderData(data); // prints actual data to the page
       })
       .catch(error => console.log(error));
   }
 
-//   function searchDeals(){
-//     fetch(`/deal_item?category_ids=${catID}`)
-//     .then(response => response.json())
-//       .then(data => {
-//           console.log(data);
-//           catID = "";
-//       })
-//       .catch(error => console.log(error));
-//   }
+
+  function deals(){
+    fetch(`ebay-us?eBayCatId=15032`) // ${searchText}
+    .then(response => response.json())
+    .then(data => {
+        console.log(
+        "Entire deals JSON: ", data
+        );
+        // renderData(data); // prints actual data to the page
+    })
+    .catch(error => console.log(error));
+}
+
+// //   http://www.ebay.com/rps/feed/v1.1/ebay-us/
+
+// xmlToJson = function(xml) {
+//     var obj = {};
+//     if (xml.nodeType == 1) {                
+//         if (xml.attributes.length > 0) {
+//             obj["@attributes"] = {};
+//             for (var j = 0; j < xml.attributes.length; j++) {
+//                 var attribute = xml.attributes.item(j);
+//                 obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+//             }
+//         }
+//     } else if (xml.nodeType == 3) { 
+//         obj = xml.nodeValue;
+//     }            
+//     if (xml.hasChildNodes()) {
+//         for (var i = 0; i < xml.childNodes.length; i++) {
+//             var item = xml.childNodes.item(i);
+//             var nodeName = item.nodeName;
+//             if (typeof (obj[nodeName]) == "undefined") {
+//                 obj[nodeName] = xmlToJson(item);
+//             } else {
+//                 if (typeof (obj[nodeName].push) == "undefined") {
+//                     var old = obj[nodeName];
+//                     obj[nodeName] = [];
+//                     obj[nodeName].push(old);
+//                 }
+//                 obj[nodeName].push(xmlToJson(item));
+//             }
+//         }
+//     }
+//     return obj;
+// }
 
 
+
+// function dealsAPI() {
+//     fetch('http://www.ebay.com/rps/feed/v1.1/ebay-us?eBayCatId=15032')
+//         .then(function(response) {
+//             var o = JSON.stringify(xmlToJson(response));
+//             console.log("This is the response for deals: ", o);
+//         }).then(function(response) {
+    
+//             // function callNews(myNews, myindex) {
+//             //           var title = myNews.articles[myindex].title
+//             //           var image = myNews.articles[myindex].image
+//             //           var articleText = myNews.articles[myindex].description
+//             //           var link = myNews.articles[myindex].url
+//             //           var timeAgo = myNews.articles[myindex].publishedAt
+//             //           var appendMe = $( ".news[value="+ myindex +"]" )
+//             //           var titleText = $(".textNews[value="+ myindex +"]").text(title)
+//             //           var imageSrc = $(".imageNews[value="+ myindex +"]").attr("src", image)
+//             //           var articlesHTML = $(".articleNews[value="+ myindex +"]").text(articleText)
+//             //           var linkLink = $(".linkNews[value="+ myindex +"]").attr("href", link)
+//             //           var linkText = $(".linkNews[value="+ myindex +"]").text(link)
+//             //           var timeAgoText = $(".timeAgo[value="+ myindex +"]").text(timeAgo)
+//             //           appendMe.append(titleText, imageSrc, articlesHTML, linkLink, linkText, timeAgoText)
+//             //           }
+//             //           for (var i = 0; i < 3; i++) {
+//             //             callNews(myJson, i)  
+//             //           }
+//                     });
+//                 }

@@ -55,6 +55,21 @@ app.use('/search', function(req, res){
     });
 });
 
+
+
+
+
+app.use('/search', function(req, res){
+    ebay.getDeals({
+      limit: 10, // no of deals per request
+   // deal for specific category id
+      }).then((data) => {
+        return res.status(200).send(data);
+      }, (error) => {
+        return res.status(404).send(data);
+  });
+});
+
 // app.use('/search', function(req, res){
 //   ebay.getDeals({
 //     limit: 2, // no of deals per request
