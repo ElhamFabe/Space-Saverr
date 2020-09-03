@@ -5,15 +5,19 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             primaryKey: true
         },
-        name: {
-            type: DataTypes.STRING, 
-            allowNull: false
-        }, 
         title: {
             type: DataTypes.STRING,
             allowNull: false
         },
         category: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        gallery_picture: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        listing_type: {
             type: DataTypes.STRING,
             allowNull: false
         },
