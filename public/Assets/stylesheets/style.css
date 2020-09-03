@@ -31,11 +31,15 @@ a {
   left:0;
   bottom:0;
 }
-.input {
+#searchId {
   margin-top: 30rem;
   text-align: center;
-  height: 10rem;
+  height: 3rem;
   width: 800px;
+}
+#spaceSearch {
+  margin-top: 30rem;
+  
 }
 .tone-1{
   background-color: whitesmoke;
