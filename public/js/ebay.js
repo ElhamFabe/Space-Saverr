@@ -45,6 +45,11 @@
   }
 
   function searchDeals(){
-      
+    fetch(`/search?category_ids=${catID}`)
+    .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          catID = "";
+      });
   }
   module.exports = catID;
