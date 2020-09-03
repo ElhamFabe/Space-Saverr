@@ -40,7 +40,7 @@ app.use('/search', function(req, res){
         pageNumber: 1,
         Condition: 3000,
         SoldItemsOnly: false,
-        limit: 10,
+        limit: 1,
         entriesPerPage: 1,
         affiliate: {
             networkId: 9,

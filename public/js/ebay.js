@@ -1,106 +1,41 @@
-// const Ebay = require('ebay-node-api');
 
-// // let ebay = new Ebay({
-// //     clientID: 'CarloDeF-RutgersC-PRD-b46b9fe23-e9da986d',
-// //     clientSecret: 'PRD-46b9fe237cd6-af92-4748-a77b-e4bb',
-// //     body: {
-// //         grant_type: 'client_credentials',
-// //     //you may need to define the oauth scope
-// //     scope: 'https://api.ebay.com/oauth/api_scope'
-// //     }
-// // });
+//   DO NOT TOUCH THIS IVAN, YOU SON OF A GUN!
+  
+  const searchItems = document.getElementById('search-items');
+  function renderData(data){
+      const items = data[0].searchResult[0].item;
+      items.forEach((searchItem) => {
+          if(searchItem.title){
+              let element = document.createElement('div');
+              element.textContent = searchItem.title[0];
+              searchItems.appendChild(element);
+          }
+      });
+  }
 
-// let ebay = new Ebay({
-//     clientID: 'CarloDeF-RutgersC-PRD-b46b9fe23-e9da986d',
-//     clientSecret: 'PRD-46b9fe237cd6-af92-4748-a77b-e4bb',
-//     body: {
-//         grant_type: 'client_credentials',
-//         scope: 'https://api.ebay.com/oauth/api_scope'
-
-//     }
-// });
-
-
-// ebay.getAccessToken().then((data) => {
-//     console.log(data); // data.access_token
-// }, (error) => {
-//     console.log(error);
-// });
-
-// ebay.findItemsByKeywords({
-//     keywords: 'Garmin nuvi 1300 Automotive GPS Receiver',
-//     sortOrder: 'PricePlusShippingLowest', //https://developer.ebay.com/devzone/finding/callref/extra/fndcmpltditms.rqst.srtordr.html
-//     pageNumber: 2,
-//     limit: 2
-// }).then((data) => {
-//     console.log(data);
-// }, (error) => {
-//     console.log(error);
-// });
-
-// ebay.getMostWatchedItems({
-//     maxResults: 3, // optional
-//     categoryId: 267 // optional
-// }).then((data) => {
-//     if (data.errorMessage) {
-//         console.log('Error:' + data.errorMessage);
-//     }
-//     console.log(JSON.stringify(data));
-// });
-
-    // get deals for specific country code and category
-    // ebay.getDeals({
-    //     limit: 5, // no of deals per request
-    //     countryCode:'ebay-us', 
-    //     eBayCatId: '' // deal for specific category id
-    // }).then((data) => {
-    //     console.log(data);
-    // });
-
-    // ebay.getDeals({
-    //     limit: 12
-    // }).then((data) => {
-    //     console.log("This is the get deals data id: ", data.item[5]);
-    //     console.log("This is the get deals data title: ", data.item[5].title);
-    //     console.log("This is the get deals data Original Price: ", data.item[5].originalPrice);
-    //     console.log("This is the get deals data Price: ", data.item[5].price);
-    // });
-
-    // search button listener
-    var keySearch;
-    var sortBy = "PricePlusShippingLowest";
-
-// $(".searchButton").on("click", function() {
-//     var textBox = $(".searchBox").val();
-//     keySearch = textBox;
-//     searchEbayByKeyword(keySearch, sortBy);
-// });
-
-    console.log(keySearch);
-
-    $.post("api/ebay", function (){
-        //js object how ever it is formated in the /api/ebay route
-        //{
-        //     keywords: keySearch,
-        //     sortOrder: sortBy, //https://developer.ebay.com/devzone/finding/callref/extra/fndcmpltditms.rqst.srtordr.html
-        //     pageNumber: 2,
-        //     limit: 10
-        // //}
-        //
-    });
-    
-
-
-function searchEbayByKeyword(keySearch, sortBy) {
-    ebay.FindItemsByKeywords({
-        keywords: keySearch,
-        sortOrder: sortBy, //https://developer.ebay.com/devzone/finding/callref/extra/fndcmpltditms.rqst.srtordr.html
-        pageNumber: 2,
-        limit: 10
-    }).then((data) => {
-        console.log(data);
-    }, (error) => {
-        console.log(error);
-    });
-}
-
+  function search(){
+      const searchText = document.getElementById('searchId').value;
+      // clear the existing items.
+      searchItems.innerHTML = '';
+      fetch(`/search?keyword=${searchText}`)
+      .then(response => response.json())
+      .then(data => {
+          console.log(
+          "Title: ", data[0].searchResult[0].item[0].title, "\n",
+          "Product ID: ", data[0].searchResult[0].item[0].itemId[0], "\n",
+          "Category Name: ", data[0].searchResult[0].item[0].primaryCategory[0].categoryName, "\n",
+          "Category ID: ", data[0].searchResult[0].item[0].primaryCategory[0].categoryId, "\n", //NS
+          "Gallery picture: ", data[0].searchResult[0].item[0].pictureURLLarge, "\n",
+          "Listing Type: ", data[0].searchResult[0].item[0].listingInfo[0].listingType, "\n",
+          "Current price: ", data[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__, "\n", 
+          "Ending time: ", data[0].searchResult[0].item[0].listingInfo[0].endTime, "\n", 
+          "Watch count: ", data[0].searchResult[0].item[0].listingInfo[0].watchCount, "\n",
+          "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n",
+          "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n",
+          "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n",
+          "Entire data JSON: ", data
+          );
+          // renderData(data); // prints actual data to the page
+      })
+      .catch(error => console.log(error));
+  }

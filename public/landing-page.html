@@ -448,41 +448,7 @@
   </div> -->
 
 <!-- Ebay script for search box -->
-<script>
-  const searchItems = document.getElementById('search-items');
-  function renderData(data){
-      const items = data[0].searchResult[0].item;
-      items.forEach((searchItem) => {
-          if(searchItem.title){
-              let element = document.createElement('div');
-              element.textContent = searchItem.title[0];
-              searchItems.appendChild(element);
-          }
-      });
-  }
-  function search(){
-      const searchText = document.getElementById('searchId').value;
-      // clear the existing items.
-      searchItems.innerHTML = '';
-      fetch(`/search?keyword=${searchText}`)
-      .then(response => response.json())
-      .then(data => {
-          console.log(
-          "Title: ", data[0].searchResult[0].item[0].title, "\n", 
-          "Listing Type: ", data[0].searchResult[0].item[0].listingInfo[0].listingType, "\n", 
-          "Ending time: ", data[0].searchResult[0].item[0].listingInfo[0].endTime, "\n", 
-          "Watch count: ", data[0].searchResult[0].item[0].listingInfo[0].watchCount, "\n",
-          "Gallery picture: ", data[0].searchResult[0].item[0].galleryURL, "\n",
-          "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n",
-          "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n",
-          "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n",
-          "Entire data JSON: ", data
-          )
-          // renderData(data); // prints actual data to the page
-      })
-      .catch(error => console.log(error));
-  }
-</script>
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -506,6 +472,7 @@
 
   });
     </script>
+  <script src="./js/ebay.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
     crossorigin="anonymous"></script>
