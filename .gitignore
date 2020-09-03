@@ -3,6 +3,9 @@ node_modules
 .env
 ds_store
 /models/index.js
+/config/config.js
+/config/config.json
+
 
 # Logs
 logs

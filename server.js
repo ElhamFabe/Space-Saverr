@@ -1,3 +1,5 @@
+require("dotenv").config();
+// always have it in the file that starts everything
 // Requiring necessary npm packages
 const express = require("express");
 const session = require("express-session");
