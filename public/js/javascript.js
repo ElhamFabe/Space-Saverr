@@ -12,6 +12,10 @@ if (count === -1){
   $('.loading').hide();
   $('.main').hide();
   $('#spaceCards').show();
+  $('#searchId').show();
+  // add searchbar
+  $('#spaceSearch').show();
+
   counter = 4;
 }
 }, 1000);
