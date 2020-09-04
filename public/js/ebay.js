@@ -23,19 +23,19 @@
       .then(response => response.json())
       .then(data => {
           console.log(
-          "Title: ", data[0].searchResult[0].item[0].title, "\n",
-          "Product ID: ", data[0].searchResult[0].item[0].itemId[0], "\n",
-          "Category Name: ", data[0].searchResult[0].item[0].primaryCategory[0].categoryName, "\n",
+          "Title: ", data[0].searchResult[0].item[0].title, "\n", // YES
+          "Product ID: ", data[0].searchResult[0].item[0].itemId[0], "\n", // NS
+          "Category Name: ", data[0].searchResult[0].item[0].primaryCategory[0].categoryName, "\n", // YES
           "Category ID: ", data[0].searchResult[0].item[0].primaryCategory[0].categoryId, "\n", //NS
-          "Gallery picture: ", data[0].searchResult[0].item[0].pictureURLLarge, "\n",
-          "Listing Type: ", data[0].searchResult[0].item[0].listingInfo[0].listingType, "\n",
-          "Current price: ", data[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__, "\n", 
-          "Ending time: ", data[0].searchResult[0].item[0].listingInfo[0].endTime, "\n", 
-          "Watch count: ", data[0].searchResult[0].item[0].listingInfo[0].watchCount, "\n",
-          "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n",
-          "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n",
-          "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n",
-          "Entire data JSON: ", data
+          "Gallery picture: ", data[0].searchResult[0].item[0].pictureURLLarge, "\n", // YES
+          "Listing Type: ", data[0].searchResult[0].item[0].listingInfo[0].listingType, "\n", // NO
+          "Current price: ", data[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__, "\n",  // YES
+          "Ending time: ", data[0].searchResult[0].item[0].listingInfo[0].endTime, "\n", // YES
+          "Watch count: ", data[0].searchResult[0].item[0].listingInfo[0].watchCount, "\n", // YES
+          "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n", // YES
+          "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n", // YES
+          "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n", // NO
+          "Entire data JSON: ", data // NO
           );
           // renderData(data); // prints actual data to the page
       })
