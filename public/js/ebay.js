@@ -49,14 +49,12 @@
 
 
   function deals(catID){  
-    fetch('http://www.ebay.com/rps/feed/v1.1/ebay-us?eBayCatId=' + catID)
-// ${searchText}
+    fetch('https://www.ebay.com/rps/feed/v1.1/ebay-us?eBayCatId=' + catID)
     .then(response => response.text())
     .then(response => JSON.stringify(response))
     .then(data => {
         parser = new DOMParser();
         doc = parser.parseFromString(data, "text/html");
-        // console.log("Engage: ", doc.getElementById("html").innerHTML);
         console.log(typeof doc, doc);
 
 // Test with a string.
@@ -72,7 +70,7 @@ function mapDOM(element, json) {
         if (window.DOMParser) {
               parser = new DOMParser();
               docNode = parser.parseFromString(element,"text/xml");
-        } else { // Microsoft strikes again
+        } else { 
               docNode = new ActiveXObject("Microsoft.XMLDOM");
               docNode.async = false;
               docNode.loadXML(element); 
@@ -80,7 +78,7 @@ function mapDOM(element, json) {
         element = docNode.firstChild;
     }
 
-    //Recursively loop through DOM elements and assign properties to object
+    //Recursively loop
     function treeHTML(element, object) {
         object["type"] = element.nodeName;
         var nodeList = element.childNodes;
@@ -113,7 +111,7 @@ function mapDOM(element, json) {
 
 // Logs top 10 deals sorted by category that the user searched
 console.log("We found " + (jsonResults.content[0].content[1].content[2].content.length - 1) + " deals for your searched category!");
-// test
+
 for (var i = 1; i < jsonResults.content[0].content[1].content[2].content.length; i++) {
     for (var j = 0; j < 11; j++) {
         console.log(jsonResults.content[0].content[1].content[2].content[i].content[j].type, ": " ,jsonResults.content[0].content[1].content[2].content[i].content[j].content);
