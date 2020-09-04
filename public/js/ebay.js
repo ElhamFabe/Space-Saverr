@@ -15,7 +15,12 @@
       });
   }
 
-//   var catID = "";
+    //   var catID = "";
+
+  
+  
+
+  productInfoArray = [];
 
   function search(){
       const searchText = document.getElementById('searchId').value;
@@ -24,6 +29,35 @@
       fetch(`/search?keyword=${searchText}`)
       .then(response => response.json())
       .then(data => {
+
+        var id = data[0].searchResult[0].item[0].itemId[0];
+            productInfoArray.push(id);
+        var title = data[0].searchResult[0].item[0].title;
+            productInfoArray.push(title);
+        var category = data[0].searchResult[0].item[0].primaryCategory[0].categoryName;
+            productInfoArray.push(category);
+        var category_id = data[0].searchResult[0].item[0].primaryCategory[0].categoryId;
+            productInfoArray.push(category_id);
+        var gallery_picture = data[0].searchResult[0].item[0].pictureURLLarge;
+            productInfoArray.push(gallery_picture);
+        var listing_type = data[0].searchResult[0].item[0].listingInfo[0].listingType;
+            productInfoArray.push(listing_type);
+        var current_price = data[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
+            productInfoArray.push(current_price);
+        var ending_time = data[0].searchResult[0].item[0].listingInfo[0].endTime;
+            productInfoArray.push(ending_time);
+        var watch_count = data[0].searchResult[0].item[0].listingInfo[0].watchCount;
+            productInfoArray.push(watch_count);
+        var returns_accepted = data[0].searchResult[0].item[0].returnsAccepted[0];
+            productInfoArray.push(returns_accepted);
+        var shipping_type = data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable;
+            productInfoArray.push(shipping_type);
+        var url_link = data[0].searchResult[0].item[0].viewItemURL[0];
+            productInfoArray.push(url_link);
+        var top_rated_listing = data[0].searchResult[0].item[0].topRatedListing[0];
+            productInfoArray.push(top_rated_listing);
+
+
           console.log(
           "Title: ", data[0].searchResult[0].item[0].title, "\n", // YES
           "Product ID: ", data[0].searchResult[0].item[0].itemId[0], "\n", // NS
@@ -37,6 +71,7 @@
           "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n", // YES
           "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n", // YES
           "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n", // NO
+          "Top Rated Listing: ", data[0].searchResult[0].item[0].topRatedListing[0], "\n", // YES
           "Entire data JSON: ", data // NO
           );
           deals(data[0].searchResult[0].item[0].primaryCategory[0].categoryId);
@@ -46,6 +81,7 @@
   }
 
 
+console.log(productInfoArray);
 
 
   function deals(catID){  
