@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
   <link rel="stylesheet" href="./Assets/stylesheets/style.css" />
   <title>Space Saverr | Search & Save App</title>
+
 </head>
 
 <body>
@@ -32,21 +33,8 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only" class="home">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Explore</a>
-        </li>
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Account
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="#">Help</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/signup">Sign Up</a>
-            <a class="dropdown-item" href="#">Log Out</a>
-          </div>
         </li> -->
       </ul>
       <ul class="nav nav-bar">
@@ -56,11 +44,12 @@
             Account
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Settings</a>
+            <a class="dropdown-item" href="#">About</a>
             <a class="dropdown-item" href="#">Help</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/signup">Sign Up</a>
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" href="/logout">Log Out</a>
+            </a>
           </div>
         </li>
       </ul>
@@ -97,12 +86,9 @@
 >>>>>>> 5220ac3118f627afdd91f17a3c1f62af7a9db9ce
     <section class="tone-1">
       <article class="product-info">
-        <h1 id="landingH1">Space Saver</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia
-          excepturi, sunt eaque optio rerum mollitia maxime! Voluptas, quae
-          minus ullam perspiciatis repudiandae sequi consectetur assumenda,
-          maiores facere eum dolorum neque?
+        <h1 id="landingH1">Space Saverr</h1>
+        <p id="motto">
+          Our mission is to bring the best deals at the  <span id="motto1">click</span> of a button. We are here to make your shopping experience quick and straight to the point. 
         </p>
       </article>
     </section>
@@ -124,14 +110,18 @@
    
 =======
       <!-- <h1 id="landingH1">Logo goes here</h1> -->
-      <img src="./Assets/img/space saverr.png"
-        alt="Space Saver" />
+      <img src="./Assets/img/index design.png" alt="Space Saver" />
       <div class="wrapper">
         <div class="buttonIn">
           <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
             <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search"
+<<<<<<< HEAD
               placeholder="Find your Deals Here" aria-label="Search" size="90">
+            <button class="searchButton btn btn btn-rounded waves-effect" type="submit"
+=======
+              placeholder="Find your Deals Here" aria-label="Search" size="1000">
             <button class="searchButton btn btn btn-rounded waves-effect" onclick="search()" type="submit"
+>>>>>>> f7234390caa27a1e63d15c7bc69ceb458c2929d5
               id="spaceSearch" value="Submit"><i class="fas fa-user-astronaut"></i> </button>
           </form>
         </div>
@@ -167,9 +157,9 @@
     <h1>Fetching Deals</h1>
   </section>
   <!-- cards beginning -->
-  <div class="wrapper" id="spaceCards">
+  <div class="wrapper scroll" id="spaceCards">
     <h1 id='dealCards'>Space Saver Deals!</h1>
-    <section class="row row1">
+    <!-- <section class="deals row row1">
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
@@ -220,24 +210,30 @@
       </article>
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <a id="ssLink1" target="0">
-        <div class="container scontainer">
-          <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
-            <div class="inner">
-              <p>Space Saverr Deal</p>
-              <span id="superSaver1"></span>
+          <div class="container scontainer">
+            <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
+              <div class="inner">
+                <p>Space Saverr Deal</p>
+                <span id="superSaver1"></span>
+              </div>
+            </div>
+            <div class="back" id="bimg1">
+              <div class="inner">
+                <p id="dis1"></p>
+                <p id="dPrice1"></p>
+                <p id="oPrice1"></p>
+              </div>
             </div>
           </div>
-          <div class="back" id="bimg1">
-            <div class="inner">
-              <p id="dis1"></p>
-              <p id="dPrice1"></p>
-              <p id="oPrice1"></p>
-            </div>
-          </div>
+<<<<<<< HEAD
         </div>
-      </a>
+      </article> -->
+    <!-- </section>
+=======
+        </a>
       </article>
     </section>
+>>>>>>> f7234390caa27a1e63d15c7bc69ceb458c2929d5
     <br>
     <br>
     <br>
@@ -289,25 +285,26 @@
       </article>
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <a id="ssLink2" target="0">
-        <div class="container scontainer">
-          <div class="front">
-            <div class="inner">
-              <p>Space Saverr Deal</p>
-              <span id="superSaver2"></span>
+          <div class="container scontainer">
+            <div class="front">
+              <div class="inner">
+                <p>Space Saverr Deal</p>
+                <span id="superSaver2"></span>
+              </div>
+            </div>
+            <div class="back" id="bimg2">
+              <div class="inner">
+                <p id="dis2"></p>
+                <p id="dPrice2"></p>
+                <p id="oPrice2"></p>
+              </div>
             </div>
           </div>
-          <div class="back" id="bimg2">
-            <div class="inner">
-              <p id="dis2"></p>
-              <p id="dPrice2"></p>
-              <p id="oPrice2"></p>
-            </div>
-          </div>
-        </div>
         </a>
       </article>
     </section>
-  </div>
+  </div> --> -->
+  <div class="empty"> </div>
   <!-- cards end -->
   <!-- loading feature -->
   <section class="loading">
@@ -334,21 +331,22 @@
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+  crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
+  <script>
+      $('.loading').hide();
+      $('.main').show();
+      $('#spaceCards').hide();
+  </script>
   <script type="text/javascript" src="./js/javascript.js"></script>
   <script type="text/javascript" src="./js/ebay.js"></script>
-  <script>
-    $('.loading').hide();
-    $('.main').show();
-    $('#spaceCards').hide();
-  </script>
+
 </body>
 
 </html>
