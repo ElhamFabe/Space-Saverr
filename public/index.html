@@ -28,21 +28,8 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only" class="home">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Explore</a>
-        </li>
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Account
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="#">Help</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/signup">Sign Up</a>
-            <a class="dropdown-item" href="#">Log Out</a>
-          </div>
         </li> -->
       </ul>
       <ul class="nav nav-bar">
@@ -52,11 +39,12 @@
             Account
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Settings</a>
+            <a class="dropdown-item" href="#">About</a>
             <a class="dropdown-item" href="#">Help</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/signup">Sign Up</a>
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" href="/logout">Log Out</a>
+            </a>
           </div>
         </li>
       </ul>
@@ -80,25 +68,26 @@
 
     <section class="tone-1">
       <article class="product-info">
-        <h1 id="landingH1">Space Saver</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia
-          excepturi, sunt eaque optio rerum mollitia maxime! Voluptas, quae
-          minus ullam perspiciatis repudiandae sequi consectetur assumenda,
-          maiores facere eum dolorum neque?
+        <h1 id="landingH1">Space Saverr</h1>
+        <p id="motto">
+          Our mission is to bring the best deals at the  <span id="motto1">click</span> of a button. We are here to make your shopping experience quick and straight to the point. 
         </p>
       </article>
     </section>
     <section class="tone-2">
       <!-- <h1 id="landingH1">Logo goes here</h1> -->
-      <img src="./Assets/img/space saverr.png"
-        alt="Space Saver" />
+      <img src="./Assets/img/index design.png" alt="Space Saver" />
       <div class="wrapper">
         <div class="buttonIn">
           <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
             <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search"
+<<<<<<< HEAD
               placeholder="Find your Deals Here" aria-label="Search" size="90">
             <button class="searchButton btn btn btn-rounded waves-effect" type="submit"
+=======
+              placeholder="Find your Deals Here" aria-label="Search" size="1000">
+            <button class="searchButton btn btn btn-rounded waves-effect" onclick="search()" type="submit"
+>>>>>>> f7234390caa27a1e63d15c7bc69ceb458c2929d5
               id="spaceSearch" value="Submit"><i class="fas fa-user-astronaut"></i> </button>
           </form>
         </div>
@@ -133,7 +122,7 @@
     <h1>Fetching Deals</h1>
   </section>
   <!-- cards beginning -->
-  <div class="wrapper" id="spaceCards">
+  <div class="wrapper scroll" id="spaceCards">
     <h1 id='dealCards'>Space Saver Deals!</h1>
     <!-- <section class="deals row row1">
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
@@ -185,27 +174,37 @@
         </div>
       </article>
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
-            <div class="inner">
-              <p>amazon</p>
-              <span>Lorem ipsum</span>
+        <a id="ssLink1" target="0">
+          <div class="container scontainer">
+            <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
+              <div class="inner">
+                <p>Space Saverr Deal</p>
+                <span id="superSaver1"></span>
+              </div>
+            </div>
+            <div class="back" id="bimg1">
+              <div class="inner">
+                <p id="dis1"></p>
+                <p id="dPrice1"></p>
+                <p id="oPrice1"></p>
+              </div>
             </div>
           </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
+<<<<<<< HEAD
         </div>
       </article> -->
     <!-- </section>
+=======
+        </a>
+      </article>
+    </section>
+>>>>>>> f7234390caa27a1e63d15c7bc69ceb458c2929d5
     <br>
     <br>
     <br>
     <section class="row row2">
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
+        <div class="container scontainer">
           <div class="front" style="background-image: url(https://unsplash.it/504/504/)">
             <div class="inner">
               <p>Ebay</p>
@@ -235,7 +234,7 @@
         </div>
       </article>
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
+        <div class="container scontainer">
           <div class="front">
             <div class="inner">
               <p>Ebay</p>
@@ -250,19 +249,23 @@
         </div>
       </article>
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front">
-            <div class="inner">
-              <p>Ebay</p>
-              <span>Lorem ipsum</span>
+        <a id="ssLink2" target="0">
+          <div class="container scontainer">
+            <div class="front">
+              <div class="inner">
+                <p>Space Saverr Deal</p>
+                <span id="superSaver2"></span>
+              </div>
+            </div>
+            <div class="back" id="bimg2">
+              <div class="inner">
+                <p id="dis2"></p>
+                <p id="dPrice2"></p>
+                <p id="oPrice2"></p>
+              </div>
             </div>
           </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
-        </div>
+        </a>
       </article>
     </section>
   </div> --> -->
