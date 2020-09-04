@@ -3,15 +3,13 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-/* Signup html  */
-
-/* landing page */
+/* index page */
 html {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 12px;
   color: rgb(41, 40, 40);
-  overflow-x: hidden;
-  overflow-y: auto;
+  /* overflow-x: hidden;
+  overflow-y: auto; */
 }
 header{
   width: 100%;
@@ -411,7 +409,7 @@ body {
   font-size: 2rem;
   font-family: 'Montserrat';
   font-weight: normal;
-  color: #444;
+  color: whitesmoke;
   text-align: center;
   margin: 2rem 0;
 }
@@ -464,12 +462,13 @@ body {
 	min-height: 280px;
 	height: auto;
 	border-radius: 10px;
-	color: black;
+	color: whitesmoke;
 	font-size: 1.5rem;
 }
 
 .back{
   background: #cedce7;
+  color: #000;
   background: -webkit-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
   background: -o-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
   background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
@@ -612,3 +611,13 @@ background-color: whitesmoke;
 }
 
 /* login */
+
+.wrapper {	
+	margin-top: 30px;
+  margin-bottom: 80px;
+}
+.login {
+  text-align: center;
+}
+
+/* Signup html  */
