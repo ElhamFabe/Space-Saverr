@@ -14,8 +14,8 @@
 </head>
 
 <body>
-  
- <!-- header -->
+
+  <!-- header -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/" class="home">Space Saverr</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -30,6 +30,21 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Explore</a>
         </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Account
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Settings</a>
+            <a class="dropdown-item" href="#">Help</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/signup">Sign Up</a>
+            <a class="dropdown-item" href="#">Log Out</a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="nav nav-bar">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -48,12 +63,12 @@
       <!-- <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
         <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search" placeholder="Search"
           aria-label="Search" size="80" >
-        <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
+         <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
 
-        <!-- <button class="searchButton btn btn-outline-info btn-rounded waves-effect" onclick="search()" type="submit"
+      <!-- <button class="searchButton btn btn-outline-info btn-rounded waves-effect" onclick="search()" type="submit"
            id="spaceSearch" value="Submit">Search</button>
 
-      </form> --> 
+      </form> -->
       <!-- Temporary div to put search items into test -->
       <h4></h4>
       <div id="search-items"></div>
@@ -61,7 +76,7 @@
     </div>
   </nav>
   <main class="main">
-  
+
     <section class="tone-1">
       <article class="product-info">
         <h1 id="landingH1">Space Saver</h1>
@@ -74,20 +89,21 @@
       </article>
     </section>
     <section class="tone-2">
-      <h1 id="landingH1">Logo goes here</h1>
-      <!-- <img src="../Public/Assets/img/png-clipart-computer-icons-astronaut-astronaut-logo-artwork.png"
-        alt="Space Saver" /> -->
-        <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
-          <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search" placeholder="Search"
-            aria-label="Search" size="80" >
-          <!-- <button class="btn btn-outline-success my-2 my-sm-0" id="spaceSearch" type="submit">Search</button> -->
-  
-          <button class="searchButton btn btn-outline-info btn-rounded waves-effect" onclick="search()" type="submit"
-             id="spaceSearch" value="Submit">Search</button>
-  
-        </form>
+      <!-- <h1 id="landingH1">Logo goes here</h1> -->
+      <img src="./Assets/img/space saverr.png"
+        alt="Space Saver" />
+      <div class="wrapper">
+        <div class="buttonIn">
+          <form action="/search/" method="GET" class="form-inline my-2 my-lg-0">
+            <input id="searchId" class="searchBox form-control mr-sm-2" name="searchdata" type="search"
+              placeholder="Find your Deals Here" aria-label="Search" size="90">
+            <button class="searchButton btn btn btn-rounded waves-effect" onclick="search()" type="submit"
+              id="spaceSearch" value="Submit"><i class="fas fa-user-astronaut"></i> </button>
+          </form>
+        </div>
+      </div>
     </section>
-   
+
   </main>
   <footer class="footer">
     <h1 id="endTail">
@@ -116,7 +132,7 @@
     <h1>Fetching Deals</h1>
   </section>
   <!-- cards beginning -->
-  <div class="wrapper" id="spaceCards">d
+  <div class="wrapper" id="spaceCards">
     <h1 id='dealCards'>Space Saver Deals!</h1>
     <section class="row row1">
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
@@ -283,8 +299,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./js/javascript.js"></script>
-    <script type="text/javascript" src="./js/ebay.js"></script>
+  <script type="text/javascript" src="./js/javascript.js"></script>
+  <script type="text/javascript" src="./js/ebay.js"></script>
   <script>
     $('.loading').hide();
     $('.main').show();
