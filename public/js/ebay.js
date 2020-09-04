@@ -15,7 +15,12 @@
       });
   }
 
-//   var catID = "";
+    //   var catID = "";
+
+  
+  
+
+  var productInfoArray = [];
 
   function search(){
       const searchText = document.getElementById('searchId').value;
@@ -24,6 +29,35 @@
       fetch(`/search?keyword=${searchText}`)
       .then(response => response.json())
       .then(data => {
+
+        var id = data[0].searchResult[0].item[0].itemId[0];
+            productInfoArray.push(id);
+        var title = data[0].searchResult[0].item[0].title;
+            productInfoArray.push(title);
+        var category = data[0].searchResult[0].item[0].primaryCategory[0].categoryName;
+            productInfoArray.push(category);
+        var category_id = data[0].searchResult[0].item[0].primaryCategory[0].categoryId;
+            productInfoArray.push(category_id);
+        var gallery_picture = data[0].searchResult[0].item[0].pictureURLLarge;
+            productInfoArray.push(gallery_picture);
+        var listing_type = data[0].searchResult[0].item[0].listingInfo[0].listingType;
+            productInfoArray.push(listing_type);
+        var current_price = data[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__;
+            productInfoArray.push(current_price);
+        var ending_time = data[0].searchResult[0].item[0].listingInfo[0].endTime;
+            productInfoArray.push(ending_time);
+        var watch_count = data[0].searchResult[0].item[0].listingInfo[0].watchCount;
+            productInfoArray.push(watch_count);
+        var returns_accepted = data[0].searchResult[0].item[0].returnsAccepted[0];
+            productInfoArray.push(returns_accepted);
+        var shipping_type = data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable;
+            productInfoArray.push(shipping_type);
+        var url_link = data[0].searchResult[0].item[0].viewItemURL[0];
+            productInfoArray.push(url_link);
+        var top_rated_listing = data[0].searchResult[0].item[0].topRatedListing[0];
+            productInfoArray.push(top_rated_listing);
+
+
           console.log(
           "Title: ", data[0].searchResult[0].item[0].title, "\n", // YES
           "Product ID: ", data[0].searchResult[0].item[0].itemId[0], "\n", // NS
@@ -37,6 +71,7 @@
           "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n", // YES
           "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n", // YES
           "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n", // NO
+          "Top Rated Listing: ", data[0].searchResult[0].item[0].topRatedListing[0], "\n", // YES
           "Entire data JSON: ", data // NO
           );
           deals(data[0].searchResult[0].item[0].primaryCategory[0].categoryId);
@@ -46,17 +81,16 @@
   }
 
 
+console.log(productInfoArray);
 
 
   function deals(catID){  
-    fetch('http://www.ebay.com/rps/feed/v1.1/ebay-us?eBayCatId=' + catID)
-// ${searchText}
+    fetch('https://www.ebay.com/rps/feed/v1.1/ebay-us?eBayCatId=' + catID)
     .then(response => response.text())
     .then(response => JSON.stringify(response))
     .then(data => {
         parser = new DOMParser();
         doc = parser.parseFromString(data, "text/html");
-        // console.log("Engage: ", doc.getElementById("html").innerHTML);
         console.log(typeof doc, doc);
 
 // Test with a string.
@@ -72,7 +106,7 @@ function mapDOM(element, json) {
         if (window.DOMParser) {
               parser = new DOMParser();
               docNode = parser.parseFromString(element,"text/xml");
-        } else { // Microsoft strikes again
+        } else { 
               docNode = new ActiveXObject("Microsoft.XMLDOM");
               docNode.async = false;
               docNode.loadXML(element); 
@@ -80,7 +114,7 @@ function mapDOM(element, json) {
         element = docNode.firstChild;
     }
 
-    //Recursively loop through DOM elements and assign properties to object
+    //Recursively loop
     function treeHTML(element, object) {
         object["type"] = element.nodeName;
         var nodeList = element.childNodes;
@@ -113,7 +147,7 @@ function mapDOM(element, json) {
 
 // Logs top 10 deals sorted by category that the user searched
 console.log("We found " + (jsonResults.content[0].content[1].content[2].content.length - 1) + " deals for your searched category!");
-// test
+
 for (var i = 1; i < jsonResults.content[0].content[1].content[2].content.length; i++) {
     for (var j = 0; j < 11; j++) {
         console.log(jsonResults.content[0].content[1].content[2].content[i].content[j].type, ": " ,jsonResults.content[0].content[1].content[2].content[i].content[j].content);
