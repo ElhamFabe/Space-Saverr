@@ -72,7 +72,7 @@ module.exports = function(app) {
   app.get("/search", function(req, res) {
     ebay2
       .getDeals({
-        limit: 2, // no of deals per request
+        limit: 40, // no of deals per request
         countryCode: "ebay-us", // deal for specific category id
       })
       .then(

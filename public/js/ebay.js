@@ -92,29 +92,137 @@ $(document).ready(function() {
         // )
         // test
         // jsonResults.content[0].content[1].content[2].content.length
-        saverItemArray = []
-        for (var i = 1; i < 3; i++) {
+        let rowCounter = 1;
+        let indexCounter = 1;
+        saverItemArray = [];
+        for (var i = 1; i <= 8; i++) {
           for (var j = 0; j < 11; j++) {
             var saverItem1 =
               jsonResults.content[0].content[1].content[2].content[i].content[j]
-                .type
+                .type;
             var saverItem2 =
               jsonResults.content[0].content[1].content[2].content[i].content[j]
-                .content
-            var saverItem = saverItem1 + ": " + saverItem2
-            console.log("These are the saver items: " + saverItem)
-            saverItemArray.push(saverItem)
-            // console.log(jsonResults.content[0].content[1].content[2].content[i].content[j].type, ": " ,jsonResults.content[0].content[1].content[2].content[i].content[j].content);
-            if (
-              jsonResults.content[0].content[1].content[2].content[i].content[j]
-                .type === "SHIPPINGCOST"
-            ) {
-              console.log("==================================================")
-            }
-          }
-        }
+                .content;
+            var saverItem = saverItem1 + ": " + saverItem2;
+            console.log("These are the saver items: " + saverItem);
+            saverItemArray.push(saverItem);
 
-        console.log("Saver array", saverItemArray)
+
+            if (jsonResults.content[0].content[1].content[2].content[i].content[j]
+              .type === "SHIPPINGCOST") {
+              
+              if (rowCounter % 4 === 0 || rowCounter === 1) {
+              var sectionRow = $("<section>");
+              sectionRow.addClass("row row"+rowCounter);
+              $("#dealCards").append(sectionRow);
+              rowCounter++;
+              }
+
+              // <article>
+              var article = $("<article>");
+              article.addClass("col-md-3 " + indexCounter);
+              article.attr("ontouchstart", "this.classList.toggle('hover');");
+              $(".row row"+rowCounter).append(article);
+              // <a>
+              var a = $("<a>");
+              a.addClass("ssLink"+indexCounter);
+              a.attr("target", "0");
+              $(article).append(a);
+              // <div>
+              var container = $("<div>");
+              container.addClass("container " + indexCounter);
+              $(a).append(container);
+
+              // <div> inner
+              var inner = $("<div>");
+              inner.addClass("inner " + indexCounter);
+              $(front).append(inner);
+              // <p> deal
+              var pTag = $("<p>");
+              pTag.addClass(indexCounter);
+              pTag.text("Space Saverr Deal");
+              $(inner).append(pTag);
+              // <span> SuperSaver
+              var span = $("<span>");
+              span.attr("id", "superSaver" + indexCounter);
+              $(pTag).append(span);
+              // <div> Back
+              var backTag = $("<div>");
+              backTag.attr("id","bimg"+indexCounter);
+              $(span).append(backTag);
+              // <div> innerBack
+              var innerBack = $("<div>");
+              innerBack.addClass("inner");
+              $(backTag).append(innerBack);
+              // <p> dis
+              var p1 = $("<p>");
+              p1.attr("id","dis"+indexCounter);
+              $(innerBack).append(p1);
+              // <p> dPrice
+              var p2 = $("<p>");
+              p2.attr("id","dPrice"+indexCounter);
+              $(innerBack).append(p2);
+              // <p> oPrice
+              var p3 = $("<p>");
+              p3.attr("id","oPrice"+indexCounter);
+              $(innerBack).append(p3);
+
+              var title = saverItemArray[1].split("TITLE: "); // 1
+              $("#superSaver" + indexCounter)
+                .empty()
+                .append(title[1]);
+
+              var url = saverItemArray[2].split("URL: "); // 2
+              $("#ssLink" + indexCounter).attr("href", url[1]);
+                           
+              var discount = saverItemArray[8].split("DISCOUNTPERCENTAGE:"); // 3
+              $("#dis" + indexCounter)
+                .empty()
+                .append("Space Saverr Discount: " + discount[1] + "%");
+
+              var currency = saverItemArray[5].split("CURRENCY:"); // 4
+              var dPrice = saverItemArray[6].split("PRICE:");
+              $("#dPrice" + indexCounter)
+                .empty()
+                .append("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
+              
+              var oPrice = saverItemArray[7].split("ORIGINALPRICE:"); // 5
+              $("#oPrice" + indexCounter)
+                .empty()
+                .append("Original Price: " + currency[1] + " $" + oPrice[1]);
+
+              var bgimg = saverItemArray[4].split("IMAGE225:");
+              var trimedURL = bgimg[1].trim(); 
+              // <div> image
+              var front = $("<div>");
+              front.addClass("front " + indexCounter);
+              $(front).css("background-image", "url(" + trimedURL + ")");
+              $(container).append(front);
+              
+          saverItemArray = [];
+          indexCounter++;
+            }
+            // console.log(jsonResults.content[0].content[1].content[2].content[i].content[j].type, ": " ,jsonResults.content[0].content[1].content[2].content[i].content[j].content);
+              // var bgimg1 = saverItemArray[15].split("IMAGE225:");
+              // // console.log(bgimg[1]);
+              // $("#bimg2").css("background-image", "url('" + bgimg1[1] + "')");
+            }
+
+
+          }
+          indexCounter = 1;
+          rowCounter = 1;
+          // Appending card title as per Space Saverr result
+           // console.log(title);   
+           // var title1 = saverItemArray[12].split("TITLE: ")
+              // // console.log(title1);
+              // $("#superSaver" + (k + 1))
+              //   .empty()
+              //   .append(title1[1])
+              // Appending Links to SpaceSaverr Cards
+          
+          
+        })
         // *****************************************************************
         // *                                                               *
         // * THIS SECTION CONTAINS ALL APPENDS IN THE SPACE SAVERR RESULTS *
@@ -124,83 +232,40 @@ $(document).ready(function() {
         //
         // Appending Titles for SpaceSaverr Cards
         // console.log(saverItemArray);
-        for (
-          var i = 0;
-          i < jsonResults.content[0].content[1].content[2].content.length - 1;
-          i++
-        ) {
-          // Appending card title as per Space Saverr result
-          var title = saverItemArray[1].split("TITLE: ")
-          // console.log(title);
-          $("#superSaver" + (i + 1))
-            .empty()
-            .append(title[1])
-          var title1 = saverItemArray[12].split("TITLE: ")
-          // console.log(title1);
-          $("#superSaver" + (i + 1))
-            .empty()
-            .append(title1[1])
-          // Appending Links to SpaceSaverr Cards
-          var url = saverItemArray[2].split("URL: ")
-          // console.log(url);
-          $("#ssLink" + (i + 1)).attr("href", url[1])
-          var url1 = saverItemArray[13].split("URL: ")
-          // console.log(url1);
-          $("#ssLink" + (i + 1)).attr("href", url1[1])
-          // Appending the Discount Percent, Discounted Price and Original Price
-          var discount = saverItemArray[8].split("DISCOUNTPERCENTAGE:")
-          // console.log("Space Saverr Discount " + discount[1] + "%");
-          $("#dis" + (i + 1))
-            .empty()
-            .append("Space Saverr Discount: " + discount[1] + "%")
-          var currency = saverItemArray[5].split("CURRENCY:")
-          // console.log(currency[1]);
-          var dPrice = saverItemArray[6].split("PRICE:")
-          // console.log("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
-          $("#dPrice" + (i + 1))
-            .empty()
-            .append("Space Saverr Price: " + currency[1] + " $" + dPrice[1])
-          var oPrice = saverItemArray[7].split("ORIGINALPRICE:")
-          // console.log("Original Price: $" + oPrice[1]);
-          $("#oPrice" + (i + 1))
-            .empty()
-            .append("Original Price: " + currency[1] + " $" + oPrice[1])
-          // $('#ssLink1').attr("href", url[1]);
-          var discount1 = saverItemArray[19].split("DISCOUNTPERCENTAGE:")
-          // console.log("Space Saverr Discount " + discount1[1] + "%");
-
-          // $("#dis2")
-          //   .empty()
-          //   .append("Space Saverr Discount: " + discount1[1] + "%");
-          // var dPrice1 = saverItemArray[17].split("PRICE:");
-          // console.log("Space Saverr Price: $" + dPrice1[1]);
-          // $("#dPrice2")
-          //   .empty()
-          //   .append("Space Saverr Price: " + currency[1] + " $" + dPrice1[1]);
-          // var oPrice1 = saverItemArray[18].split("ORIGINALPRICE:");
-          // // console.log("Original Price: $" + oPrice1[1]);
-          // $("#oPrice2")
-          //   .empty()
-          //   .append("Original Price: " + currency[1] + " $" + oPrice1[1]);
-          // Generating Discount Cards Background Images
-          var bgimg = saverItemArray[4].split("IMAGE225:")
-          // console.log(bgimg[1]);
-          $("#bimg" + (i + 1)).css(
-            "background-image",
-            "url('" + bgimg[1] + "')"
-          )
-
-          
-          // var bgimg1 = saverItemArray[15].split("IMAGE225:");
-          // // console.log(bgimg[1]);
-          // $("#bimg2").css("background-image", "url('" + bgimg1[1] + "')");
-        }
+        
         // End of conditional statement for appending Space Saverr Deals
-      })
-      .catch(error => console.log(error))
-  };
+        .catch(error => console.log(error));
+      }
+
+  });
 
 // makeArticle.attr("id", "r" + i);
 });
 
-});
+// console.log(url);
+// var url1 = saverItemArray[13].split("URL: ")
+              // // console.log(url1);
+// Appending the Discount Percent, Discounted Price and Original Price
+// console.log("Space Saverr Discount " + discount[1] + "%");
+// console.log(currency[1]);
+ // console.log("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
+ // console.log("Original Price: $" + oPrice[1]);
+              // $('#ssLink1').attr("href", url[1]);
+              // var discount1 = saverItemArray[19].split("DISCOUNTPERCENTAGE:")
+              // console.log("Space Saverr Discount " + discount1[1] + "%");
+    
+              // $("#dis2")
+              //   .empty()
+              //   .append("Space Saverr Discount: " + discount1[1] + "%");
+              // var dPrice1 = saverItemArray[17].split("PRICE:");
+              // console.log("Space Saverr Price: $" + dPrice1[1]);
+              // $("#dPrice2")
+              //   .empty()
+              //   .append("Space Saverr Price: " + currency[1] + " $" + dPrice1[1]);
+              // var oPrice1 = saverItemArray[18].split("ORIGINALPRICE:");
+              // // console.log("Original Price: $" + oPrice1[1]);
+              // $("#oPrice2")
+              //   .empty()
+              //   .append("Original Price: " + currency[1] + " $" + oPrice1[1]);
+              // Generating Discount Cards Background Images
+              // console.log(bgimg[1]);
