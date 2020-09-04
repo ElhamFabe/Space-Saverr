@@ -50,7 +50,6 @@
 
   function deals(catID){  
     fetch('https://www.ebay.com/rps/feed/v1.1/ebay-us?eBayCatId=' + catID)
-        // ${searchText}
     .then(response => response.text())
     .then(response => JSON.stringify(response))
     .then(data => {
