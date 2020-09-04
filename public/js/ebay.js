@@ -29,34 +29,78 @@ $(document).ready(function() {
         .then((data) => {
           for (var i = 0; i < 6; i++) {
             var itemArray = [
-              "id:" + data[0].searchResult[0].item[i].itemId[0],
-              "title:" + data[0].searchResult[0].item[i].title,
+              "id:" + data[0].searchResult[0].item[i].itemId[0], // 0
+              "title:" + data[0].searchResult[0].item[i].title, // 1
               "category:" +
-                data[0].searchResult[0].item[i].primaryCategory[0].categoryName,
+                data[0].searchResult[0].item[i].primaryCategory[0].categoryName, // 2
               "category_id:" +
-                data[0].searchResult[0].item[i].primaryCategory[0].categoryId,
+                data[0].searchResult[0].item[i].primaryCategory[0].categoryId, // 3
               "gallery_picture:" +
-                data[0].searchResult[0].item[i].pictureURLLarge,
+                data[0].searchResult[0].item[i].pictureURLLarge, // 4
               "listing_type:" +
-                data[0].searchResult[0].item[i].listingInfo[0].listingType,
+                data[0].searchResult[0].item[i].listingInfo[0].listingType, // 5
               "current_price:" +
                 data[0].searchResult[0].item[i].sellingStatus[0].currentPrice[0]
-                  .__value__,
+                  .__value__, // 6
               "ending_time:" +
-                data[0].searchResult[0].item[i].listingInfo[0].endTime,
+                data[0].searchResult[0].item[i].listingInfo[0].endTime, // 7 
               "watch_count:" +
-                data[0].searchResult[0].item[i].listingInfo[0].watchCount,
+                data[0].searchResult[0].item[i].listingInfo[0].watchCount, //8
               "returns_accepted:" +
-                data[0].searchResult[0].item[i].returnsAccepted[0],
+                data[0].searchResult[0].item[i].returnsAccepted[0], // 9
               "shipping_type:" +
                 data[0].searchResult[0].item[i].shippingInfo[0]
-                  .oneDayShippingAvailable,
-              "url_link:" + data[0].searchResult[0].item[i].viewItemURL[0],
+                  .oneDayShippingAvailable, // 10
+              "url_link:" + data[0].searchResult[0].item[i].viewItemURL[0], // 11
               "top_rated_listing:" +
-                data[0].searchResult[0].item[i].topRatedListing[0],
+                data[0].searchResult[0].item[i].topRatedListing[0], // 12
             ];
             productInfoArray.push(itemArray);
+            console.log(productInfoArray);
+
+              $('#link1').attr("href", productInfoArray[11]);
+              $('#ebay1').empty().append(productInfoArray[1]);
+              $('#currPrice1').empty().append(productInfoArray[6]);
+              $('#returns1').empty().append(productInfoArray[9]);
+              $('#sameDay1').empty().append(productInfoArray[10]);
+              $('#ebayimg1').css("url('" + productInfoArray[4] + "')");
+
+              $('#link2').attr("href", productInfoArray[23]);
+              $('#ebay2').empty().append(productInfoArray[13]);
+              $('#currPrice2').empty().append(productInfoArray[18]);
+              $('#returns2').empty().append(productInfoArray[21]);
+              $('#sameDay2').empty().append(productInfoArray[22]);
+              $('#ebayimg2').css("url('" + productInfoArray[16] + "')");
+
+              $('#link3').attr("href", productInfoArray[35]);
+              $('#ebay3').empty().append(productInfoArray[25]);
+              $('#currPrice3').empty().append(productInfoArray[30]);
+              $('#returns3').empty().append(productInfoArray[33]);
+              $('#sameDay3').empty().append(productInfoArray[24]);
+              $('#ebayimg3').css("url('" + productInfoArray[28] + "')");
+
+              $('#link4').attr("href", productInfoArray[47]);
+              $('#ebay4').empty().append(productInfoArray[37]);
+              $('#currPrice4').empty().append(productInfoArray[42]);
+              $('#returns4').empty().append(productInfoArray[45]);
+              $('#sameDay4').empty().append(productInfoArray[36]);
+              $('#ebayimg4').css("url('" + productInfoArray[40] + "')");
+
+              $('#link5').attr("href", productInfoArray[59]);
+              $('#ebay5').empty().append(productInfoArray[49]);
+              $('#currPrice5').empty().append(productInfoArray[54]);
+              $('#returns5').empty().append(productInfoArray[57]);
+              $('#sameDay5').empty().append(productInfoArray[48]);
+              $('#ebayimg5').css("url('" + productInfoArray[52] + "')");
+
+              $('#link6').attr("href", productInfoArray[71]);
+              $('#ebay6').empty().append(productInfoArray[61]);
+              $('#currPrice6').empty().append(productInfoArray[66]);
+              $('#returns6').empty().append(productInfoArray[69]);
+              $('#sameDay6').empty().append(productInfoArray[60]);
+              $('#ebayimg6').css("url('" + productInfoArray[64] + "')");
           }
+        
           //   console.log(data);
           //   for (var i = 0; i < data[0].searchResult[0]["@count"]; i++) {
           //     console.log(i);
@@ -373,3 +417,5 @@ $(document).ready(function() {
       .catch((error) => console.log(error));
   }
 });
+
+// makeArticle.attr("id", "r" + i);

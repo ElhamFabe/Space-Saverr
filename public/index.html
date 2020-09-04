@@ -39,12 +39,12 @@
             Account
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">About</a>
-            <a class="dropdown-item" href="#">Help</a>
+            <!-- <a class="dropdown-item" href="#">About</a>
+            <a class="dropdown-item" href="#">Help</a> -->
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/signup">Sign Up</a>
-            <a class="dropdown-item" href="/logout">Log Out</a>
-            </a>
+            <!-- <a class="login dropdown-item" href="/login">Login</a> -->
+            <a class="dropdown-item" href="/signup">Sign Up / Login</a>
+            <a class="logout dropdown-item">Log Out</a>
           </div>
         </li>
       </ul>
@@ -121,32 +121,38 @@
     <h1 id='dealCards'>Space Saver Deals!</h1>
     <section class="row row1">
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
+        <a id="link1">
+          <div class="container">
           <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
             <div class="inner">
-              <p>amazon</p>
-              <span>Lorem ipsum</span>
-            </div>
+              <p id="ebay1"></p>
+              </div>
           </div>
-          <div class="back">
+          <div class="back" id="ebayimg1">
             <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
+              <p id="currPrice1"></p>
+              <p id="returns1"></p>
+              <p id="sameDay1"></p>
               </p>
             </div>
           </div>
         </div>
       </article>
+
+     
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front">
+        <a id="link2">
+          <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
             <div class="inner">
-              <p>amazon</p>
-              <span>Lorem ipsum</span>
-            </div>
+              <p id="ebay2"></p>
+              </div>
           </div>
-          <div class="back">
+          <div class="back" id="ebayimg2">
             <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
+              <p id="currPrice2"></p>
+              <p id="returns2"></p>
+              <p id="sameDay2"></p>
               </p>
             </div>
           </div>
@@ -154,23 +160,26 @@
       </article>
 
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front" style="background-image: url(https://unsplash.it/502/502/)">
+        <a id="link3">
+          <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
             <div class="inner">
-              <p>amazon</p>
-              <span>Lorem ipsum</span>
-            </div>
+              <p id="ebay3"></p>
+              </div>
           </div>
-          <div class="back">
+          <div class="back" id="ebayimg3">
             <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+              <p id="currPrice3"></p>
+              <p id="returns3"></p>
+              <p id="sameDay3"></p>
+              </p>
             </div>
           </div>
         </div>
       </article>
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <a id="ssLink1" target="0">
-          <div class="container scontainer">
+          <div class="container">
             <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
               <div class="inner">
                 <p>Space Saverr Deal</p>
@@ -193,53 +202,62 @@
     <br>
     <section class="row row2">
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container scontainer">
-          <div class="front" style="background-image: url(https://unsplash.it/504/504/)">
+        <a id="link4">
+          <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
             <div class="inner">
-              <p>Ebay</p>
-              <span>Lorem ipsum</span>
-            </div>
+              <p id="ebay4"></p>
+              </div>
           </div>
-          <div class="back">
+          <div class="back" id="ebayimg4">
             <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container">
-          <div class="front">
-            <div class="inner">
-              <p>Ebay</p>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-          <div class="back">
-            <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+              <p id="currPrice4"></p>
+              <p id="returns4"></p>
+              <p id="sameDay4"></p>
+              </p>
             </div>
           </div>
         </div>
       </article>
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-        <div class="container scontainer">
-          <div class="front">
+        <a id="link5">
+          <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
             <div class="inner">
-              <p>Ebay</p>
-              <span>Lorem ipsum</span>
+              <p id="ebay5"></p>
+              </div>
+          </div>
+          <div class="back" id="ebayimg5">
+            <div class="inner">
+              <p id="currPrice5"></p>
+              <p id="returns5"></p>
+              <p id="sameDay5"></p>
+              </p>
             </div>
           </div>
-          <div class="back">
+        </div>
+      </article>
+      <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+        <a id="link6">
+          <div class="container">
+          <div class="front" style="background-image: url(https://unsplash.it/500/500/)">
             <div class="inner">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.</p>
+              <p id="ebay6"></p>
+              </div>
+          </div>
+          <div class="back" id="ebayimg6">
+            <div class="inner">
+              <p id="currPrice6"></p>
+              <p id="returns6"></p>
+              <p id="sameDay6"></p>
+              </p>
             </div>
           </div>
         </div>
       </article>
       <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
         <a id="ssLink2" target="0">
-          <div class="container scontainer">
+          <div class="container">
             <div class="front">
               <div class="inner">
                 <p>Space Saverr Deal</p>
