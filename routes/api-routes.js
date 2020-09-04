@@ -52,8 +52,8 @@ app.use('/search', function(req, res){
         pageNumber: 1,
         Condition: 3000,
         SoldItemsOnly: false,
-        limit: 1,
-        entriesPerPage: 1,
+        limit: 6,
+        entriesPerPage: 6,
         affiliate: {
             networkId: 9,
             trackingId: 1234567890
@@ -117,3 +117,4 @@ app.get('/search', function(req, res){
     }
   });
 };
+
