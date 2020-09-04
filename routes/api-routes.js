@@ -13,6 +13,16 @@ const ebay = new Ebay({
   }
 });
 
+const ebay2 = new Ebay({
+  clientID: "CarloDeF-RutgersC-PRD-b46b9fe23-e9da986d",
+  clientSecret: "PRD-46b9fe237cd6-af92-4748-a77b-e4bb",
+  body: {
+      grant_type: 'client_credentials',
+      scope: 'https://api.ebay.com/oauth/api_scope'
+  }
+});  
+
+
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -55,19 +65,18 @@ app.use('/search', function(req, res){
     });
 });
 
-// app.use('/search', function(req, res){
-//   ebay.getDeals({
-//     limit: 2, // no of deals per request
-//     countryCode:'ebay-us', 
-//     eBayCatId: catID // deal for specific category id
-// }).then((data) => {
-//   catID = "";
-//   return res.status(200).send(data);
-// }, (error) => {
-//   catID = "";
-//   return res.status(404).send(data);
-// });
-// });
+
+
+app.get('/search', function(req, res){
+  ebay2.getDeals({
+    limit: 2, // no of deals per request
+    countryCode:'ebay-us' // deal for specific category id
+}).then((data) => {
+  return res.status(200).send(data);
+}, (error) => {
+  return res.status(404).send(data);
+});
+});
   // Ebay routes end
 
 
