@@ -19,11 +19,15 @@
     "ebay-node-api": "^2.8.9",
     "express": "^4.17.0",
     "express-session": "^1.17.1",
+    "mysql": "^2.18.1",
     "mysql2": "^1.7.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "sequelize": "^5.8.6"
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
+    "requirejs": "^2.3.6",
+    "sequelize": "^5.22.3"
   },
   "devDependencies": {
     "chai": "^4.1.2",

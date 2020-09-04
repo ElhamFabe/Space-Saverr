@@ -15,12 +15,9 @@
       });
   }
 
-    //   var catID = "";
+//   var catID = "";
 
-  
-  
-
-  var productInfoArray = [];
+var productInfoArray = [];
 
   function search(){
       const searchText = document.getElementById('searchId').value;
@@ -57,31 +54,39 @@
         var top_rated_listing = data[0].searchResult[0].item[0].topRatedListing[0];
             productInfoArray.push(top_rated_listing);
 
-
-          console.log(
-          "Title: ", data[0].searchResult[0].item[0].title, "\n", // YES
-          "Product ID: ", data[0].searchResult[0].item[0].itemId[0], "\n", // NS
-          "Category Name: ", data[0].searchResult[0].item[0].primaryCategory[0].categoryName, "\n", // YES
-          "Category ID: ", data[0].searchResult[0].item[0].primaryCategory[0].categoryId, "\n", //NS
-          "Gallery picture: ", data[0].searchResult[0].item[0].pictureURLLarge, "\n", // YES
-          "Listing Type: ", data[0].searchResult[0].item[0].listingInfo[0].listingType, "\n", // NO
-          "Current price: ", data[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__, "\n",  // YES
-          "Ending time: ", data[0].searchResult[0].item[0].listingInfo[0].endTime, "\n", // YES
-          "Watch count: ", data[0].searchResult[0].item[0].listingInfo[0].watchCount, "\n", // YES
-          "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n", // YES
-          "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n", // YES
-          "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n", // NO
-          "Top Rated Listing: ", data[0].searchResult[0].item[0].topRatedListing[0], "\n", // YES
-          "Entire data JSON: ", data // NO
-          );
+        //   console.log(
+        //   "Title: ", data[0].searchResult[0].item[0].title, "\n", // YES
+        //   "Product ID: ", data[0].searchResult[0].item[0].itemId[0], "\n", // NS
+        //   "Category Name: ", data[0].searchResult[0].item[0].primaryCategory[0].categoryName, "\n", // YES
+        //   "Category ID: ", data[0].searchResult[0].item[0].primaryCategory[0].categoryId, "\n", //NS
+        //   "Gallery picture: ", data[0].searchResult[0].item[0].pictureURLLarge, "\n", // YES
+        //   "Listing Type: ", data[0].searchResult[0].item[0].listingInfo[0].listingType, "\n", // NO
+        //   "Current price: ", data[0].searchResult[0].item[0].sellingStatus[0].currentPrice[0].__value__, "\n",  // YES
+        //   "Ending time: ", data[0].searchResult[0].item[0].listingInfo[0].endTime, "\n", // YES
+        //   "Watch count: ", data[0].searchResult[0].item[0].listingInfo[0].watchCount, "\n", // YES
+        //   "Returns accepted?: ", data[0].searchResult[0].item[0].returnsAccepted[0], "\n", // YES
+        //   "One day shipping available?: ", data[0].searchResult[0].item[0].shippingInfo[0].oneDayShippingAvailable, "\n", // YES
+        //   "URL link: ", data[0].searchResult[0].item[0].viewItemURL[0], "\n", // NO
+        //   "Entire data JSON: ", data // NO
+        //   );
           deals(data[0].searchResult[0].item[0].primaryCategory[0].categoryId);
           // renderData(data); // prints actual data to the page
       })
       .catch(error => console.log(error));
   }
 
-
+ // *****************************************************************
+// *                                                               *
+// * THIS SECTION CONTAINS ALL APPENDS IN THE SPACE SAVERR RESULTS *
+// *                                                               *
+// *****************************************************************
+//
+//
+// Appending Titles for SpaceSaverr Cards
 console.log(productInfoArray);
+
+
+
 
 
   function deals(catID){  
@@ -150,19 +155,93 @@ function mapDOM(element, json) {
 // Logs top 10 deals sorted by category that the user searched
 console.log("We found " + (jsonResults.content[0].content[1].content[2].content.length - 1) + " deals for your searched category!");
 // test
-for (var i = 1; i < jsonResults.content[0].content[1].content[2].content.length; i++) {
+
+// jsonResults.content[0].content[1].content[2].content.length
+
+
+saverItemArray = []; 
+
+for (var i = 1; i < 3; i++) {
     for (var j = 0; j < 11; j++) {
-        console.log(jsonResults.content[0].content[1].content[2].content[i].content[j].type, ": " ,jsonResults.content[0].content[1].content[2].content[i].content[j].content);
+        
+        var saverItem1 = jsonResults.content[0].content[1].content[2].content[i].content[j].type;
+        var saverItem2 = jsonResults.content[0].content[1].content[2].content[i].content[j].content;
+        var saverItem = saverItem1 + ": " + saverItem2;
+            console.log("These are the saver items: " + saverItem);
+            saverItemArray.push(saverItem);
+        // console.log(jsonResults.content[0].content[1].content[2].content[i].content[j].type, ": " ,jsonResults.content[0].content[1].content[2].content[i].content[j].content);
         if (jsonResults.content[0].content[1].content[2].content[i].content[j].type === "SHIPPINGCOST") {
             console.log("==================================================");
         }
     }
 }
 
-    
+// *****************************************************************
+// *                                                               *
+// * THIS SECTION CONTAINS ALL APPENDS IN THE SPACE SAVERR RESULTS *
+// *                                                               *
+// *****************************************************************
+//
+//
+// Appending Titles for SpaceSaverr Cards
+// console.log(saverItemArray);
+
+if (saverItemArray == undefined) {
+    $('.scontainer').hide();
+} else {
+
+        // Appending card title as per Space Saverr result
+        var title = saverItemArray[1].split('TITLE: ');
+            // console.log(title);
+        $('#superSaver1').empty().append(title[1]);
+        var title1 = saverItemArray[12].split('TITLE: ');
+            // console.log(title1);
+        $('#superSaver2').empty().append(title1[1]);
+
+        // Appending Links to SpaceSaverr Cards
+        var url = saverItemArray[2].split('URL: ');
+            // console.log(url);
+        $('#ssLink1').attr("href", url[1]);
+        var url1 = saverItemArray[13].split('URL: ');
+            // console.log(url1);
+        $('#ssLink2').attr("href", url1[1]);
+
+        // Appending the Discount Percent, Discounted Price and Original Price
+        var discount = saverItemArray[8].split('DISCOUNTPERCENTAGE:');
+            // console.log("Space Saverr Discount " + discount[1] + "%");
+        $('#dis1').empty().append("Space Saverr Discount: " + discount[1] + "%");
+        var currency = saverItemArray[5].split('CURRENCY:');
+            // console.log(currency[1]);
+        var dPrice = saverItemArray[6].split('PRICE:');
+            // console.log("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
+        $('#dPrice1').empty().append("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
+        var oPrice = saverItemArray[7].split('ORIGINALPRICE:');
+            // console.log("Original Price: $" + oPrice[1]);
+        $('#oPrice1').empty().append("Original Price: " + currency[1] + " $" + oPrice[1]);
+        // $('#ssLink1').attr("href", url[1]);
+        var discount1 = saverItemArray[19].split('DISCOUNTPERCENTAGE:');
+            // console.log("Space Saverr Discount " + discount1[1] + "%");
+        $('#dis2').empty().append("Space Saverr Discount: " + discount1[1] + "%");
+        var dPrice1 = saverItemArray[17].split('PRICE:');
+            // console.log("Space Saverr Price: $" + dPrice1[1]);
+        $('#dPrice2').empty().append("Space Saverr Price: " + currency[1] + " $" + dPrice1[1]);
+        var oPrice1 = saverItemArray[18].split('ORIGINALPRICE:');
+            // console.log("Original Price: $" + oPrice1[1]);
+        $('#oPrice2').empty().append("Original Price: " + currency[1] + " $" + oPrice1[1]);
 
 
-    })
+        // Generating Discount Cards Background Images
+        var bgimg = saverItemArray[4].split("IMAGE225:");
+        // console.log(bgimg[1]);
+        $('#bimg1').css("background-image", "url('" + bgimg[1] + "')");
+        var bgimg1 = saverItemArray[15].split("IMAGE225:");
+        // console.log(bgimg[1]);
+        $('#bimg2').css("background-image", "url('" + bgimg1[1] + "')");
+
+
+} // End of conditional statement for appending Space Saverr Deals
+
+})
     .catch(error => console.log(error));
 }
 
