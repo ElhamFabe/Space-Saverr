@@ -20,7 +20,7 @@
   
   
 
-  productInfoArray = [];
+  var productInfoArray = [];
 
   function search(){
       const searchText = document.getElementById('searchId').value;
