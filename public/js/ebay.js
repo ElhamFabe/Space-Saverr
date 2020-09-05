@@ -56,7 +56,7 @@ $(document).ready(function() {
                     </div>
                   </div>
                   <div class="back">
-                    <div class="inner" style="background-image: url(${productInfo.pictureURLLarge})">
+                    <div class="inner">
                       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
                       </p>
                     </div>
