@@ -2,10 +2,8 @@ $(document).ready(function() {
   //   DO NOT TOUCH THIS IVAN, YOU SON OF A GUN!
 
 
-  var productInfoArray = []
 
   //   var catID = "";
-  var rowCounter = 1
 
 
   $(function () {
@@ -16,10 +14,118 @@ $(document).ready(function() {
         fetch(`/search?keyword=${searchText}`)
         .then(response => response.json())
         .then(data => {
+            console.log("This is the data: "+ data[0].searchResult[0])
+            let rowCounter = 0;
             // Selects the div with certain id according to size of search
-              
-              deals(data[0].searchResult[0].item[0].primaryCategory[0].categoryId);
+            for (var i = 0; i < data[0].searchResult[0]["@count"]; i++) {
 
+            if ((JSON.stringify(data).match('/' + data[0].searchResult[0].item[i].itemId[0] +'/gi') || []) > 1) {
+              console.log("There was a duplicate in the search on item ID#" + data[0].searchResult[0].item[i].itemId[0]);
+            } else {
+              console.log("There was not a duplicate in the search on item ID#" + data[0].searchResult[0].item[i].itemId[0])
+              console.log("Value of i: "+ i);
+            var productInfo = {
+            id: data[0].searchResult[0].item[i].itemId[0],
+            title: data[0].searchResult[0].item[i].title,
+            category: data[0].searchResult[0].item[i].primaryCategory[0].categoryName,
+            category_id: data[0].searchResult[0].item[i].primaryCategory[0].categoryId,
+            gallery_picture: data[0].searchResult[0].item[i].galleryURL,
+            pictureURLLarge: data[0].searchResult[0].item[i].pictureURLLarge,
+            listing_type: data[0].searchResult[0].item[i].listingInfo[0].listingType,
+            current_price: data[0].searchResult[0].item[i].sellingStatus[0].currentPrice[0].__value__,
+            ending_time: data[0].searchResult[0].item[i].listingInfo[0].endTime,
+            watch_count: data[0].searchResult[0].item[i].listingInfo[0].watchCount,
+            returns_accepted: data[0].searchResult[0].item[i].returnsAccepted[0],
+            shipping_type: data[0].searchResult[0].item[i].shippingInfo[0].oneDayShippingAvailable,
+            url_link: data[0].searchResult[0].item[i].viewItemURL[0],
+            top_rated_listing: data[0].searchResult[0].item[i].topRatedListing[0]      
+                };
+                console.log("Product info: "+ JSON.stringify(productInfo));
+                console.log("Img is " + productInfo.gallery_picture);
+                 // Template literal innerHTML for each card
+              if (typeof productInfo.gallery_picture !== "undefined") {
+                console.log("Img is " + productInfo.gallery_picture + " in the if statement");
+              var appendEbaySearch = `
+              <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+                <div class="container">
+                  <div class="front" style="background-image: url(${productInfo.gallery_picture})">
+                    <div class="inner">
+                      <h3>${productInfo.title}</h3>
+                      <p></p>
+                      <span>Item Category: ${productInfo.category}</span>
+                    </div>
+                  </div>
+                  <div class="back">
+                    <div class="inner" style="background-image: url(${productInfo.pictureURLLarge})">
+                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>`;
+               
+              
+              if (((rowCounter % 4)==0) == true) {
+                      console.log("If statement was hit:");
+                      var sectionRow = $("<section>");
+                      sectionRow.addClass("row");
+                      sectionRow.attr("value", rowCounter);
+                      $("#spaceCards").append(sectionRow);
+                      $(appendEbaySearch).insertAfter('section[value=' + rowCounter + ']');
+                      rowCounter++;
+                      console.log("this if statement was hit with a counter of "+ rowCounter);
+                      } else if (rowCounter === 0) {
+                        console.log("this else statement was hit with a counter of "+ rowCounter);
+                        $(appendEbaySearch).insertAfter('section[value=' + rowCounter + ']');
+                        rowCounter++;
+                      } else {
+                        console.log("this else statement was hit with a counter of "+ rowCounter);
+                        $(appendEbaySearch).insertAfter('section[value=' + (rowCounter - 1) + ']');
+                      }
+
+              console.log("This is the search count: "+ data[0].searchResult[0]["@count"]);
+  
+              } else {
+                var appendEbaySearch = `
+                <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+                  <div class="container">
+                    <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
+                      <div class="inner">
+                        <h3>${productInfo.title}</h3>
+                        <p></p>
+                        <span>Item Category: ${productInfo.category}</span>
+                      </div>
+                    </div>
+                    <div class="back">
+                      <div class="inner" style="background-image: url(https://unsplash.it/503/503/)">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </article>`;
+                 
+                
+                if (rowCounter % 4 === 0) {
+                        console.log("If statement was hit:");
+                        var sectionRow = $("<section>");
+                        sectionRow.addClass("row");
+                        sectionRow.attr("value", rowCounter);
+                        $("#spaceCards").append(sectionRow);
+                        $(appendEbaySearch).insertAfter('section[value=' + rowCounter + ']');
+                        rowCounter++;
+                        console.log("this if statement was hit with a counter of "+ rowCounter);
+                        } else {
+                          console.log("this else statement was hit with a counter of "+ rowCounter);
+                          $(appendEbaySearch).insertAfter('section[value=' + (rowCounter - 1) + ']');
+                        }
+              
+                        
+                      }
+              
+            }
+              deals(data[0].searchResult[0].item[0].primaryCategory[0].categoryId);
+          }  
           // renderData(data); // prints actual data to the page
       })
       .catch(error => console.log(error));
@@ -84,6 +190,14 @@ $(document).ready(function() {
           
           return (json) ? JSON.stringify(treeObject) : treeObject;
           }
+
+
+
+
+
+
+
+
         // Logs top 10 deals sorted by category that the user searched
         // console.log(
         //   "We found " +
@@ -92,134 +206,230 @@ $(document).ready(function() {
         // )
         // test
         // jsonResults.content[0].content[1].content[2].content.length
-        let rowCounter = 1;
-        let indexCounter = 1;
-        saverItemArray = [];
-        for (var i = 1; i <= 8; i++) {
-          for (var j = 0; j < 11; j++) {
-            var saverItem1 =
-              jsonResults.content[0].content[1].content[2].content[i].content[j]
-                .type;
-            var saverItem2 =
-              jsonResults.content[0].content[1].content[2].content[i].content[j]
-                .content;
-            var saverItem = saverItem1 + ": " + saverItem2;
-            console.log("These are the saver items: " + saverItem);
-            saverItemArray.push(saverItem);
+        // let bool = true;
+        // let rowCounter = 1;
+        // let indexCounter = 1;
+        // saverItemArray = [];
+        // for (var i = 1; i < 8; i++) {
+        //   for (var j = 0; j < 11; j++) {
+        //     var saverItem1 =
+        //       jsonResults.content[0].content[1].content[2].content[i].content[j]
+        //         .type;
+        //     var saverItem2 =
+        //       jsonResults.content[0].content[1].content[2].content[i].content[j]
+        //         .content;
+        //     var saverItem = saverItem1 + ": " + saverItem2;
+        //     // console.log("These are the saver items: " + saverItem + " This is the value of i: " + i + " This is the value of j: " + j);
+        //     saverItemArray.push(saverItem);
+            
 
+        //     if (jsonResults.content[0].content[1].content[2].content[i].content[j]
+        //       .type === "SHIPPINGCOST") {
+        //       console.log("shipping cost if was hit: ");
+            
+        //     if (rowCounter % 4 === 0) {
+        //       console.log("If statement was hit:");
+        //       var sectionRow = $("<section>");
+        //       sectionRow.addClass("row row"+rowCounter);
+        //       $("#spaceCards").append(sectionRow);
+        //       rowCounter++;
+        //       } else if (bool === true) {
+        //         var sectionRow = $("<section>");
+        //         sectionRow.addClass("row row"+rowCounter);
+        //         $("#spaceCards").append(sectionRow);
+        //         bool = false;
+        //         var article = $("<article>");
+        //         article.addClass("col-md-3 " + "art" + indexCounter);
+        //         article.attr("ontouchstart", "this.classList.toggle('hover');");
+        //         $(".row row"+rowCounter).append(article);
+        //         console.table(article);
+        //         // <a>
+        //         var a = $("<a>");
+        //         a.addClass("ssLink"+indexCounter);
+        //         a.attr("target", "0");
+        //         $(article).append(a);
+        //         // <div>
+        //         var container = $("<div>");
+        //         container.addClass("container " +"cont"+ indexCounter);
+        //         $(a).append(container);
+  
+        //         // <div> inner
+        //         var inner = $("<div>");
+        //         inner.addClass("inner " + "int" + indexCounter);
+        //         $(front).append(inner);
+        //         // <p> deal
+        //         var pTag = $("<p>");
+        //         pTag.addClass(indexCounter);
+        //         pTag.text("Space Saverr Deal");
+        //         $(inner).append(pTag);
+        //         // <span> SuperSaver
+        //         var span = $("<span>");
+        //         span.attr("id", "superSaver" + indexCounter);
+        //         $(pTag).append(span);
+        //         // <div> Back
+        //         var backTag = $("<div>");
+        //         backTag.attr("id","bimg"+indexCounter);
+        //         $(span).append(backTag);
+        //         // <div> innerBack
+        //         var innerBack = $("<div>");
+        //         innerBack.addClass("inner " + "back" + indexCounter);
+        //         $(backTag).append(innerBack);
+        //         // <p> dis
+        //         var p1 = $("<p>");
+        //         p1.attr("id","dis"+indexCounter);
+        //         $(innerBack).append(p1);
+        //         // <p> dPrice
+        //         var p2 = $("<p>");
+        //         p2.attr("id","dPrice"+indexCounter);
+        //         $(innerBack).append(p2);
+        //         // <p> oPrice
+        //         var p3 = $("<p>");
+        //         p3.attr("id","oPrice"+indexCounter);
+        //         $(innerBack).append(p3);
+  
+        //         var title = saverItemArray[1].split("TITLE: "); // 1
+        //         $("#superSaver" + indexCounter)
+        //           .empty()
+        //           .append(title[1]);
+  
+        //         var url = saverItemArray[2].split("URL: "); // 2
+        //         $("#ssLink" + indexCounter).attr("href", url[1]);
+                             
+        //         var discount = saverItemArray[8].split("DISCOUNTPERCENTAGE:"); // 3
+        //         $("#dis" + indexCounter)
+        //           .empty()
+        //           .append("Space Saverr Discount: " + discount[1] + "%");
+  
+        //         var currency = saverItemArray[5].split("CURRENCY:"); // 4
+        //         var dPrice = saverItemArray[6].split("PRICE:");
+        //         $("#dPrice" + indexCounter)
+        //           .empty()
+        //           .append("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
+                
+        //         var oPrice = saverItemArray[7].split("ORIGINALPRICE:"); // 5
+        //         $("#oPrice" + indexCounter)
+        //           .empty()
+        //           .append("Original Price: " + currency[1] + " $" + oPrice[1]);
+  
+        //         var bgimg = saverItemArray[4].split("IMAGE225:");
+        //         var trimedURL = bgimg[1].trim(); 
+        //         // <div> image
+        //         var front = $("<div>");
+        //         front.addClass("front " + "frt" +indexCounter);
+        //         $(front).css("background-image", "url(" + trimedURL + ")");
+        //         $(container).append(front);
+        //         console.log("All appends were run ");
+  
+        //     saverItemArray = [];
+        //     indexCounter++;
+        //     rowCounter++;
+        //       } else {
+        //       // <article>
+        //       var article = $("<article>");
+        //       article.addClass("col-md-3 " + "art" + indexCounter);
+        //       article.attr("ontouchstart", "this.classList.toggle('hover');");
+        //       $(".row row"+rowCounter).append(article);
+        //       console.table(article);
+        //       // <a>
+        //       var a = $("<a>");
+        //       a.addClass("ssLink"+indexCounter);
+        //       a.attr("target", "0");
+        //       $(article).append(a);
+        //       // <div>
+        //       var container = $("<div>");
+        //       container.addClass("container " +"cont"+ indexCounter);
+        //       $(a).append(container);
 
-            if (jsonResults.content[0].content[1].content[2].content[i].content[j]
-              .type === "SHIPPINGCOST") {
-              
-              if (rowCounter % 4 === 0 || rowCounter === 1) {
-              var sectionRow = $("<section>");
-              sectionRow.addClass("row row"+rowCounter);
-              $("#dealCards").append(sectionRow);
-              rowCounter++;
-              }
+        //       // <div> inner
+        //       var inner = $("<div>");
+        //       inner.addClass("inner " + "int" + indexCounter);
+        //       $(front).append(inner);
+        //       // <p> deal
+        //       var pTag = $("<p>");
+        //       pTag.addClass(indexCounter);
+        //       pTag.text("Space Saverr Deal");
+        //       $(inner).append(pTag);
+        //       // <span> SuperSaver
+        //       var span = $("<span>");
+        //       span.attr("id", "superSaver" + indexCounter);
+        //       $(pTag).append(span);
+        //       // <div> Back
+        //       var backTag = $("<div>");
+        //       backTag.attr("id","bimg"+indexCounter);
+        //       $(span).append(backTag);
+        //       // <div> innerBack
+        //       var innerBack = $("<div>");
+        //       innerBack.addClass("inner " + "back" + indexCounter);
+        //       $(backTag).append(innerBack);
+        //       // <p> dis
+        //       var p1 = $("<p>");
+        //       p1.attr("id","dis"+indexCounter);
+        //       $(innerBack).append(p1);
+        //       // <p> dPrice
+        //       var p2 = $("<p>");
+        //       p2.attr("id","dPrice"+indexCounter);
+        //       $(innerBack).append(p2);
+        //       // <p> oPrice
+        //       var p3 = $("<p>");
+        //       p3.attr("id","oPrice"+indexCounter);
+        //       $(innerBack).append(p3);
 
-              // <article>
-              var article = $("<article>");
-              article.addClass("col-md-3 " + indexCounter);
-              article.attr("ontouchstart", "this.classList.toggle('hover');");
-              $(".row row"+rowCounter).append(article);
-              // <a>
-              var a = $("<a>");
-              a.addClass("ssLink"+indexCounter);
-              a.attr("target", "0");
-              $(article).append(a);
-              // <div>
-              var container = $("<div>");
-              container.addClass("container " + indexCounter);
-              $(a).append(container);
+        //       var title = saverItemArray[1].split("TITLE: "); // 1
+        //       $("#superSaver" + indexCounter)
+        //         .empty()
+        //         .append(title[1]);
 
-              // <div> inner
-              var inner = $("<div>");
-              inner.addClass("inner " + indexCounter);
-              $(front).append(inner);
-              // <p> deal
-              var pTag = $("<p>");
-              pTag.addClass(indexCounter);
-              pTag.text("Space Saverr Deal");
-              $(inner).append(pTag);
-              // <span> SuperSaver
-              var span = $("<span>");
-              span.attr("id", "superSaver" + indexCounter);
-              $(pTag).append(span);
-              // <div> Back
-              var backTag = $("<div>");
-              backTag.attr("id","bimg"+indexCounter);
-              $(span).append(backTag);
-              // <div> innerBack
-              var innerBack = $("<div>");
-              innerBack.addClass("inner");
-              $(backTag).append(innerBack);
-              // <p> dis
-              var p1 = $("<p>");
-              p1.attr("id","dis"+indexCounter);
-              $(innerBack).append(p1);
-              // <p> dPrice
-              var p2 = $("<p>");
-              p2.attr("id","dPrice"+indexCounter);
-              $(innerBack).append(p2);
-              // <p> oPrice
-              var p3 = $("<p>");
-              p3.attr("id","oPrice"+indexCounter);
-              $(innerBack).append(p3);
-
-              var title = saverItemArray[1].split("TITLE: "); // 1
-              $("#superSaver" + indexCounter)
-                .empty()
-                .append(title[1]);
-
-              var url = saverItemArray[2].split("URL: "); // 2
-              $("#ssLink" + indexCounter).attr("href", url[1]);
+        //       var url = saverItemArray[2].split("URL: "); // 2
+        //       $("#ssLink" + indexCounter).attr("href", url[1]);
                            
-              var discount = saverItemArray[8].split("DISCOUNTPERCENTAGE:"); // 3
-              $("#dis" + indexCounter)
-                .empty()
-                .append("Space Saverr Discount: " + discount[1] + "%");
+        //       var discount = saverItemArray[8].split("DISCOUNTPERCENTAGE:"); // 3
+        //       $("#dis" + indexCounter)
+        //         .empty()
+        //         .append("Space Saverr Discount: " + discount[1] + "%");
 
-              var currency = saverItemArray[5].split("CURRENCY:"); // 4
-              var dPrice = saverItemArray[6].split("PRICE:");
-              $("#dPrice" + indexCounter)
-                .empty()
-                .append("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
+        //       var currency = saverItemArray[5].split("CURRENCY:"); // 4
+        //       var dPrice = saverItemArray[6].split("PRICE:");
+        //       $("#dPrice" + indexCounter)
+        //         .empty()
+        //         .append("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
               
-              var oPrice = saverItemArray[7].split("ORIGINALPRICE:"); // 5
-              $("#oPrice" + indexCounter)
-                .empty()
-                .append("Original Price: " + currency[1] + " $" + oPrice[1]);
+        //       var oPrice = saverItemArray[7].split("ORIGINALPRICE:"); // 5
+        //       $("#oPrice" + indexCounter)
+        //         .empty()
+        //         .append("Original Price: " + currency[1] + " $" + oPrice[1]);
 
-              var bgimg = saverItemArray[4].split("IMAGE225:");
-              var trimedURL = bgimg[1].trim(); 
-              // <div> image
-              var front = $("<div>");
-              front.addClass("front " + indexCounter);
-              $(front).css("background-image", "url(" + trimedURL + ")");
-              $(container).append(front);
-              
-          saverItemArray = [];
-          indexCounter++;
-            }
-            // console.log(jsonResults.content[0].content[1].content[2].content[i].content[j].type, ": " ,jsonResults.content[0].content[1].content[2].content[i].content[j].content);
-              // var bgimg1 = saverItemArray[15].split("IMAGE225:");
-              // // console.log(bgimg[1]);
-              // $("#bimg2").css("background-image", "url('" + bgimg1[1] + "')");
-            }
+        //       var bgimg = saverItemArray[4].split("IMAGE225:");
+        //       var trimedURL = bgimg[1].trim(); 
+        //       // <div> image
+        //       var front = $("<div>");
+        //       front.addClass("front " + "frt" +indexCounter);
+        //       $(front).css("background-image", "url(" + trimedURL + ")");
+        //       $(container).append(front);
+        //       console.log("All appends were run ");
+
+        //   saverItemArray = [];
+        //   indexCounter++;
+        //   console.log("Appends were run, with a rowcounter of: "+ rowCounter);
+        //       }
+        //     }
+        //     // console.log(jsonResults.content[0].content[1].content[2].content[i].content[j].type, ": " ,jsonResults.content[0].content[1].content[2].content[i].content[j].content);
+        //       // var bgimg1 = saverItemArray[15].split("IMAGE225:");
+        //       // // console.log(bgimg[1]);
+        //       // $("#bimg2").css("background-image", "url('" + bgimg1[1] + "')");
+        //     }
 
 
-          }
-          indexCounter = 1;
-          rowCounter = 1;
-          // Appending card title as per Space Saverr result
-           // console.log(title);   
-           // var title1 = saverItemArray[12].split("TITLE: ")
-              // // console.log(title1);
-              // $("#superSaver" + (k + 1))
-              //   .empty()
-              //   .append(title1[1])
-              // Appending Links to SpaceSaverr Cards
+        //   }
+        //   indexCounter = 1;
+        //   rowCounter = 1;
+        //   // Appending card title as per Space Saverr result
+        //    // console.log(title);   
+        //    // var title1 = saverItemArray[12].split("TITLE: ")
+        //       // // console.log(title1);
+        //       // $("#superSaver" + (k + 1))
+        //       //   .empty()
+        //       //   .append(title1[1])
+        //       // Appending Links to SpaceSaverr Cards
           
           
         })
