@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 
   //   var catID = "";
-
+  let rowCounter = 0;
 
   $(function () {
     $("#spaceSearch").click(function (e) {
@@ -14,16 +14,11 @@ $(document).ready(function() {
         fetch(`/search?keyword=${searchText}`)
         .then(response => response.json())
         .then(data => {
-            console.log("This is the data: "+ data[0].searchResult[0])
-            let rowCounter = 0;
+
+
+          
             // Selects the div with certain id according to size of search
             for (var i = 0; i < data[0].searchResult[0]["@count"]; i++) {
-
-            if ((JSON.stringify(data).match('/' + data[0].searchResult[0].item[i].itemId[0] +'/gi') || []) > 1) {
-              console.log("There was a duplicate in the search on item ID#" + data[0].searchResult[0].item[i].itemId[0]);
-            } else {
-              console.log("There was not a duplicate in the search on item ID#" + data[0].searchResult[0].item[i].itemId[0])
-              console.log("Value of i: "+ i);
             var productInfo = {
             id: data[0].searchResult[0].item[i].itemId[0],
             title: data[0].searchResult[0].item[i].title,
@@ -40,11 +35,8 @@ $(document).ready(function() {
             url_link: data[0].searchResult[0].item[i].viewItemURL[0],
             top_rated_listing: data[0].searchResult[0].item[i].topRatedListing[0]      
                 };
-                console.log("Product info: "+ JSON.stringify(productInfo));
-                console.log("Img is " + productInfo.gallery_picture);
                  // Template literal innerHTML for each card
-              if (typeof productInfo.gallery_picture !== "undefined") {
-                console.log("Img is " + productInfo.gallery_picture + " in the if statement");
+                 console.log(data[0].searchResult[0].item[i].itemId[0])
               var appendEbaySearch = `
               <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
                 <div class="container">
@@ -66,71 +58,83 @@ $(document).ready(function() {
                
               
               if (((rowCounter % 4)==0) == true) {
-                      console.log("If statement was hit:");
+                      console.log("Row building statement was hit: =========================================");
+                      var br = $("<br>");
                       var sectionRow = $("<section>");
                       sectionRow.addClass("row");
                       sectionRow.attr("value", rowCounter);
-                      $("#spaceCards").append(sectionRow);
-                      $(appendEbaySearch).insertAfter('section[value=' + rowCounter + ']');
-                      rowCounter++;
+                      $(sectionRow).appendTo('div[id="spaceCards"]');
+                      $(br).appendTo('div[id="spaceCards"]');
+                      $(br).appendTo('div[id="spaceCards"]');
+                      $(br).appendTo('div[id="spaceCards"]');
                       console.log("this if statement was hit with a counter of "+ rowCounter);
-                      } else if (rowCounter === 0) {
-                        console.log("this else statement was hit with a counter of "+ rowCounter);
-                        $(appendEbaySearch).insertAfter('section[value=' + rowCounter + ']');
-                        rowCounter++;
+                      rowCounter++;
                       } else {
-                        console.log("this else statement was hit with a counter of "+ rowCounter);
-                        $(appendEbaySearch).insertAfter('section[value=' + (rowCounter - 1) + ']');
+                        let temp = rowCounter;
+                        for (var j = 0; j < 4; j++) {
+                        var productInfo = {
+                          id: data[0].searchResult[0].item[temp].itemId[0],
+                          title: data[0].searchResult[0].item[temp].title,
+                          category: data[0].searchResult[0].item[temp].primaryCategory[0].categoryName,
+                          category_id: data[0].searchResult[0].item[temp].primaryCategory[0].categoryId,
+                          gallery_picture: data[0].searchResult[0].item[temp].galleryURL,
+                          pictureURLLarge: data[0].searchResult[0].item[temp].pictureURLLarge,
+                          listing_type: data[0].searchResult[0].item[temp].listingInfo[0].listingType,
+                          current_price: data[0].searchResult[0].item[temp].sellingStatus[0].currentPrice[0].__value__,
+                          ending_time: data[0].searchResult[0].item[temp].listingInfo[0].endTime,
+                          watch_count: data[0].searchResult[0].item[temp].listingInfo[0].watchCount,
+                          returns_accepted: data[0].searchResult[0].item[temp].returnsAccepted[0],
+                          shipping_type: data[0].searchResult[0].item[temp].shippingInfo[0].oneDayShippingAvailable,
+                          url_link: data[0].searchResult[0].item[temp].viewItemURL[0],
+                          top_rated_listing: data[0].searchResult[0].item[temp].topRatedListing[0]      
+                              };
+                          var appendEbaySearch = `
+                          <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
+                            <div class="container">
+                              ${
+                            (() => {
+                              if (typeof productInfo.gallery_picture !== "undefined") {
+                                return `<div class="front" style="background-image: url(${productInfo.gallery_picture})">`;
+                              } else {
+                                return `<div class="front" style="background-image: url(https://picsum.photos/503/503/)">`;
+                              }
+                            })()
+                            }
+                                <div class="inner">
+                                  <h3>${productInfo.title}</h3>
+                                  <p></p>
+                                  <span>Item Category: ${productInfo.category}</span>
+                                </div>
+                              </div>
+                              ${
+                            (() => {
+                              if (typeof productInfo.pictureURLLarge !== "undefined") {
+                                return `<div class="back" style="background-image: url(${productInfo.pictureURLLarge})">`;
+                              } else {
+                                return `<div class="back" style="background-image: url(https://picsum.photos/503/503/)">`;
+                              }
+                            })()
+                            }
+                                <div class="inner">
+                                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </article>`;
+                        $(appendEbaySearch).appendTo('section[value=' + (rowCounter - 1) + ']');
+                        temp++;
+                        console.log("This is the temp after increment: ",temp);
+                        }
+                      rowCounter += 3;
                       }
 
-              console.log("This is the search count: "+ data[0].searchResult[0]["@count"]);
-  
-              } else {
-                var appendEbaySearch = `
-                <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-                  <div class="container">
-                    <div class="front" style="background-image: url(https://unsplash.it/503/503/)">
-                      <div class="inner">
-                        <h3>${productInfo.title}</h3>
-                        <p></p>
-                        <span>Item Category: ${productInfo.category}</span>
-                      </div>
-                    </div>
-                    <div class="back">
-                      <div class="inner" style="background-image: url(https://unsplash.it/503/503/)">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </article>`;
-                 
-                
-                if (rowCounter % 4 === 0) {
-                        console.log("If statement was hit:");
-                        var sectionRow = $("<section>");
-                        sectionRow.addClass("row");
-                        sectionRow.attr("value", rowCounter);
-                        $("#spaceCards").append(sectionRow);
-                        $(appendEbaySearch).insertAfter('section[value=' + rowCounter + ']');
-                        rowCounter++;
-                        console.log("this if statement was hit with a counter of "+ rowCounter);
-                        } else {
-                          console.log("this else statement was hit with a counter of "+ rowCounter);
-                          $(appendEbaySearch).insertAfter('section[value=' + (rowCounter - 1) + ']');
-                        }
-              
-                        
-                      }
-              
-            }
-              deals(data[0].searchResult[0].item[0].primaryCategory[0].categoryId);
           }  
           // renderData(data); // prints actual data to the page
+          deals(data[0].searchResult[0].item[0].primaryCategory[0].categoryId);
       })
       .catch(error => console.log(error));
       }); 
-  
 
   function deals(catID) {
     fetch("https://www.ebay.com/rps/feed/v1.1/ebay-us?eBayCatId=" + catID)
@@ -139,11 +143,9 @@ $(document).ready(function() {
       .then(data => {
         parser = new DOMParser()
         doc = parser.parseFromString(data, "text/html");
-        console.log(typeof doc, doc);
         // Test with a string.
         json = mapDOM(doc, true);
         let jsonResults = JSON.parse(json)
-        console.log("This is the JSON object: ", JSON.parse(json));
         function mapDOM(element, json) {
           var treeObject = {};
           
