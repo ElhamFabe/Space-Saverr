@@ -1,9 +1,6 @@
 $(document).ready(function() {
   //   DO NOT TOUCH THIS IVAN, YOU SON OF A GUN!
 
-
-
-  //   var catID = "";
   let rowCounter = 0;
 
   $(function () {
@@ -14,49 +11,8 @@ $(document).ready(function() {
         fetch(`/search?keyword=${searchText}`)
         .then(response => response.json())
         .then(data => {
-
-
-          
             // Selects the div with certain id according to size of search
-            for (var i = 0; i < data[0].searchResult[0]["@count"]; i++) {
-            var productInfo = {
-            id: data[0].searchResult[0].item[i].itemId[0],
-            title: data[0].searchResult[0].item[i].title,
-            category: data[0].searchResult[0].item[i].primaryCategory[0].categoryName,
-            category_id: data[0].searchResult[0].item[i].primaryCategory[0].categoryId,
-            gallery_picture: data[0].searchResult[0].item[i].galleryURL,
-            pictureURLLarge: data[0].searchResult[0].item[i].pictureURLLarge,
-            listing_type: data[0].searchResult[0].item[i].listingInfo[0].listingType,
-            current_price: data[0].searchResult[0].item[i].sellingStatus[0].currentPrice[0].__value__,
-            ending_time: data[0].searchResult[0].item[i].listingInfo[0].endTime,
-            watch_count: data[0].searchResult[0].item[i].listingInfo[0].watchCount,
-            returns_accepted: data[0].searchResult[0].item[i].returnsAccepted[0],
-            shipping_type: data[0].searchResult[0].item[i].shippingInfo[0].oneDayShippingAvailable,
-            url_link: data[0].searchResult[0].item[i].viewItemURL[0],
-            top_rated_listing: data[0].searchResult[0].item[i].topRatedListing[0]      
-                };
-                 // Template literal innerHTML for each card
-                 console.log(data[0].searchResult[0].item[i].itemId[0])
-              var appendEbaySearch = `
-              <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-                <div class="container">
-                  <div class="front" style="background-image: url(${productInfo.gallery_picture})">
-                    <div class="inner">
-                      <h3>${productInfo.title}</h3>
-                      <p></p>
-                      <span>Item Category: ${productInfo.category}</span>
-                    </div>
-                  </div>
-                  <div class="back">
-                    <div class="inner">
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </article>`;
-               
-              
+            for (var i = 0; i < data[0].searchResult[0]["@count"]; i++) {              
               if (((rowCounter % 4)==0) == true) {
                       console.log("Row building statement was hit: =========================================");
                       var br = $("<br>");
@@ -90,7 +46,8 @@ $(document).ready(function() {
                               };
                           var appendEbaySearch = `
                           <article class="col-md-3" ontouchstart="this.classList.toggle('hover');">
-                            <div class="container">
+                            <a id="ssLink1" href="${productInfo.url_link}" target="_blank">
+                              <div class="container">
                               ${
                             (() => {
                               if (typeof productInfo.gallery_picture !== "undefined") {
@@ -116,8 +73,9 @@ $(document).ready(function() {
                             })()
                             }
                                 <div class="inner">
-                                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat velit quae suscipit c.
-                                  </p>
+                                  <p>Current Price: ${productInfo.current_price}</p>
+                                  <p>Auction/buy ends at: ${productInfo.ending_time}</p>
+                                  <p>Shipping type: ${productInfo.shipping_type}</p>
                                 </div>
                               </div>
                             </div>
@@ -128,9 +86,7 @@ $(document).ready(function() {
                         }
                       rowCounter += 3;
                       }
-
           }  
-          // renderData(data); // prints actual data to the page
           deals(data[0].searchResult[0].item[0].primaryCategory[0].categoryId);
       })
       .catch(error => console.log(error));
@@ -148,21 +104,19 @@ $(document).ready(function() {
         let jsonResults = JSON.parse(json)
         function mapDOM(element, json) {
           var treeObject = {};
-          
           // If string convert to document Node
           if (typeof element === "string") {
             if (window.DOMParser) {
                   parser = new DOMParser();
                   docNode = parser.parseFromString(element,"text/xml");
             } else { 
-                  docNode = new ActiveXObject("Microsoft.XMLDOM");
+                  docNode = new ActiveXObject("Microsoft.XMLDOM"); // microsoft ftw 
                   docNode.async = false;
                   docNode.loadXML(element); 
             } 
             element = docNode.firstChild;
           }
-          
-          //Recursively loop
+          //Recursive loop
           function treeHTML(element, object) {
             object["type"] = element.nodeName;
             var nodeList = element.childNodes;
@@ -189,13 +143,59 @@ $(document).ready(function() {
             }
           }
           treeHTML(element, treeObject);
-          
           return (json) ? JSON.stringify(treeObject) : treeObject;
           }
+        }).catch(error => console.log(error));
+      }
+  });
+});
 
 
 
 
+
+        // *****************************************************************
+        // *                                                               *
+        // * THIS SECTION CONTAINS ALL APPENDS IN THE SPACE SAVERR RESULTS *
+        // *                                                               *
+        // *****************************************************************
+        //
+        //
+        // Appending Titles for SpaceSaverr Cards
+        // console.log(saverItemArray);
+        
+        // End of conditional statement for appending Space Saverr Deals
+
+
+// console.log(url);
+// var url1 = saverItemArray[13].split("URL: ")
+              // // console.log(url1);
+// Appending the Discount Percent, Discounted Price and Original Price
+// console.log("Space Saverr Discount " + discount[1] + "%");
+// console.log(currency[1]);
+ // console.log("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
+ // console.log("Original Price: $" + oPrice[1]);
+              // $('#ssLink1').attr("href", url[1]);
+              // var discount1 = saverItemArray[19].split("DISCOUNTPERCENTAGE:")
+              // console.log("Space Saverr Discount " + discount1[1] + "%");
+    
+              // $("#dis2")
+              //   .empty()
+              //   .append("Space Saverr Discount: " + discount1[1] + "%");
+              // var dPrice1 = saverItemArray[17].split("PRICE:");
+              // console.log("Space Saverr Price: $" + dPrice1[1]);
+              // $("#dPrice2")
+              //   .empty()
+              //   .append("Space Saverr Price: " + currency[1] + " $" + dPrice1[1]);
+              // var oPrice1 = saverItemArray[18].split("ORIGINALPRICE:");
+              // // console.log("Original Price: $" + oPrice1[1]);
+              // $("#oPrice2")
+              //   .empty()
+              //   .append("Original Price: " + currency[1] + " $" + oPrice1[1]);
+              // Generating Discount Cards Background Images
+              // console.log(bgimg[1]);
+
+              
 
 
 
@@ -434,50 +434,3 @@ $(document).ready(function() {
         //       // Appending Links to SpaceSaverr Cards
           
           
-        })
-        // *****************************************************************
-        // *                                                               *
-        // * THIS SECTION CONTAINS ALL APPENDS IN THE SPACE SAVERR RESULTS *
-        // *                                                               *
-        // *****************************************************************
-        //
-        //
-        // Appending Titles for SpaceSaverr Cards
-        // console.log(saverItemArray);
-        
-        // End of conditional statement for appending Space Saverr Deals
-        .catch(error => console.log(error));
-      }
-
-  });
-
-// makeArticle.attr("id", "r" + i);
-});
-
-// console.log(url);
-// var url1 = saverItemArray[13].split("URL: ")
-              // // console.log(url1);
-// Appending the Discount Percent, Discounted Price and Original Price
-// console.log("Space Saverr Discount " + discount[1] + "%");
-// console.log(currency[1]);
- // console.log("Space Saverr Price: " + currency[1] + " $" + dPrice[1]);
- // console.log("Original Price: $" + oPrice[1]);
-              // $('#ssLink1').attr("href", url[1]);
-              // var discount1 = saverItemArray[19].split("DISCOUNTPERCENTAGE:")
-              // console.log("Space Saverr Discount " + discount1[1] + "%");
-    
-              // $("#dis2")
-              //   .empty()
-              //   .append("Space Saverr Discount: " + discount1[1] + "%");
-              // var dPrice1 = saverItemArray[17].split("PRICE:");
-              // console.log("Space Saverr Price: $" + dPrice1[1]);
-              // $("#dPrice2")
-              //   .empty()
-              //   .append("Space Saverr Price: " + currency[1] + " $" + dPrice1[1]);
-              // var oPrice1 = saverItemArray[18].split("ORIGINALPRICE:");
-              // // console.log("Original Price: $" + oPrice1[1]);
-              // $("#oPrice2")
-              //   .empty()
-              //   .append("Original Price: " + currency[1] + " $" + oPrice1[1]);
-              // Generating Discount Cards Background Images
-              // console.log(bgimg[1]);
