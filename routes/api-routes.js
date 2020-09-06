@@ -49,11 +49,8 @@ module.exports = function(app) {
       .findItemsByKeywords({
         keywords: queryParam.keyword,
         sortOrder: "PricePlusShippingLowest", //https://developer.ebay.com/devzone/finding/callref/extra/fndcmpltditms.rqst.srtordr.html
-        pageNumber: 6,
         Condition: 3000,
         SoldItemsOnly: false,
-        limit: 6,
-        entriesPerPage: 6,
         affiliate: {
           networkId: 9,
           trackingId: 1234567890,
@@ -72,7 +69,7 @@ module.exports = function(app) {
   app.get("/search", function(req, res) {
     ebay2
       .getDeals({
-        limit: 2, // no of deals per request
+        limit: 40, // no of deals per request
         countryCode: "ebay-us", // deal for specific category id
       })
       .then(
@@ -99,20 +96,20 @@ module.exports = function(app) {
       })
       .catch(err => {
         res.status(401).json(err)
-      })
-  })
+      });
+  });
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
-    req.logout()
-    res.redirect("/")
-  })
+    req.logout();
+    res.redirect("/");
+  });
 
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
       // The user is not logged in, send back an empty object
-      res.json({})
+      res.json({});
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
@@ -143,11 +140,11 @@ module.exports = function(app) {
       })
       .then(
         data => {
-          return res.status(200).send(data)
+          return res.status(200).send(data);
         },
         error => {
-          return res.status(404).send(data)
+          return res.status(404).send(data);
         }
-      )
-  })
-}
+      );
+  });
+};
