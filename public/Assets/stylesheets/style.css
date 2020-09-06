@@ -9,12 +9,17 @@ html {
   font-size: 12px;
   color: rgb(41, 40, 40);
 <<<<<<< HEAD
+<<<<<<< HEAD
   overflow-x: hidden;
   overflow-y: auto;
 =======
   /* overflow-x: hidden;
   overflow-y: auto; */
 >>>>>>> ba5597af6a3416d312acd363b4bcbd19d9b7c8d1
+=======
+  overflow-x: hidden;
+  overflow-y: auto;
+>>>>>>> a03989149155de5ce2c66ce57e1613181f0017ca
 }
 header{
   width: 100%;
@@ -497,6 +502,8 @@ body {
 .back{
   background: #cedce7;
   color: #000;
+  /* text shadow for back cards */
+  text-shadow: 2px 2px #000;
   background: -webkit-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
   background: -o-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
   background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
